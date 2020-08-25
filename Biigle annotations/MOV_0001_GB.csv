@@ -1,0 +1,328 @@
+video_annotation_label_id,label_id,label_name,label_hierarchy,user_id,firstname,lastname,video_id,video_name,shape_id,shape_name,points,frames,video_annotation_id
+127735,18479,"Sea stars","Biota > Echinoderms > Sea stars",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1133.45,783.87]]",[106.910398],93762
+127769,18523,"True crabs","Biota > Crustacea > Crabs > True crabs",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[727.59,704.15]]",[192.792654],93796
+135488,149140,Bivalves,"Biota > Molluscs > Bivalves",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[613.14,517.49]]",[11.99492],100939
+135505,149459,"Carcinus maenas","Biota > Crustacea > Crabs > True crabs > Carcinus maenas",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1371.65,476.47]]",[13.014939],100955
+135506,149459,"Carcinus maenas","Biota > Crustacea > Crabs > True crabs > Carcinus maenas",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[893.15,409.56]]",[27.09067],100956
+135507,149459,"Carcinus maenas","Biota > Crustacea > Crabs > True crabs > Carcinus maenas",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1408.31,241.97]]",[38.921765],100957
+135512,149487,"Leucippa pentagona","Biota > Crustacea > Crabs > True crabs > Leucippa pentagona",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[309.68,635.8]]",[190.813681],100962
+135513,149487,"Leucippa pentagona","Biota > Crustacea > Crabs > True crabs > Leucippa pentagona",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[349.75,473.77]]",[190.813681],100963
+135514,149487,"Leucippa pentagona","Biota > Crustacea > Crabs > True crabs > Leucippa pentagona",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[501.34,271.01]]",[190.813681],100964
+135515,149487,"Leucippa pentagona","Biota > Crustacea > Crabs > True crabs > Leucippa pentagona",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[58.78,955.55]]",[191.284395],100965
+135516,149487,"Leucippa pentagona","Biota > Crustacea > Crabs > True crabs > Leucippa pentagona",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[121.89,705.86]]",[191.284395],100966
+135518,149452,"Anasterias antarctica","Biota > Echinoderms > Sea stars > Anasterias antarctica",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[788.35,588.19]]",[24.578728],100968
+135519,149451,"Allostichaster capensis","Biota > Echinoderms > Sea stars > Allostichaster capensis",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1152,763.36]]",[27.98514],100969
+135520,149451,"Allostichaster capensis","Biota > Echinoderms > Sea stars > Allostichaster capensis",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[32.5,457.25]]",[30.211548],100970
+135521,149451,"Allostichaster capensis","Biota > Echinoderms > Sea stars > Allostichaster capensis",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1579.92,350.63]]",[38.921765],100971
+135522,149451,"Allostichaster capensis","Biota > Echinoderms > Sea stars > Allostichaster capensis",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[269.77,579.01]]",[41.226483],100972
+135524,149452,"Anasterias antarctica","Biota > Echinoderms > Sea stars > Anasterias antarctica",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[359.44,829.7]]",[48.372375],100974
+135525,149451,"Allostichaster capensis","Biota > Echinoderms > Sea stars > Allostichaster capensis",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[728.71,987.02]]",[51.097521],100975
+135526,149451,"Allostichaster capensis","Biota > Echinoderms > Sea stars > Allostichaster capensis",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1896.23,250.47]]",[52.373126],100976
+135527,149452,"Anasterias antarctica","Biota > Echinoderms > Sea stars > Anasterias antarctica",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1056.56,913.1]]",[57.592826],100977
+135531,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1019.33,504.69]]",[103.923857],100981
+135532,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1611.93,907.12]]",[109.247932],100982
+135533,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[793.45,503.3]]",[112.262882],100983
+135534,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1657.26,295.34]]",[143.270646],100984
+135535,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[399.04,860.27]]",[163.259906],100985
+135536,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1856.48,689.95]]",[110.508461],100986
+135537,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[414.24,63.52]]",[110.508461],100987
+135538,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1124.73,762.32]]",[136.658587],100988
+135539,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1436.37,579.18]]",[162.083815],100989
+135540,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1710.45,141.38]]",[168.465281],100990
+135541,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[716.83,178.4]]",[176.901359],100991
+135544,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[166.23,581.46]]",[223.387718],100994
+135545,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[662.19,477.46]]",[225.181703],100995
+135547,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1831.02,735.81]]",[228.845645],100997
+135548,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[64.18,280.8]]",[230.505147],100998
+135549,149487,"Leucippa pentagona","Biota > Crustacea > Crabs > True crabs > Leucippa pentagona",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[965.62,180.87]]",[230.801243],100999
+135551,149452,"Anasterias antarctica","Biota > Echinoderms > Sea stars > Anasterias antarctica",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[604.22,811.53]]",[231.752107],101001
+135552,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1406.77,753.37]]",[240.356385],101002
+135553,149143,"Bony fishes","Biota > Fishes > Bony fishes",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1442.69,688.64]]",[243.057944],101003
+135556,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[948.36,658.55]]",[280.302138],101006
+135559,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1731.37,368.56]]",[285.531717],101009
+135560,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[597.08,146.84]]",[285.531717],101010
+135561,149343,"Sea stars","Biota > Echinoderms > Sea stars",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[976.22,828.97]]",[285.821219],101011
+135562,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[291.31,767.59]]",[288.794707],101012
+135565,149143,"Bony fishes","Biota > Fishes > Bony fishes",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1009.48,535.18]]",[301.921625],101015
+135566,149143,"Bony fishes","Biota > Fishes > Bony fishes",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[863.71,364.12]]",[303.242104],101016
+135567,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[730.59,524.7]]",[308.57],101017
+135569,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[555.18,642.27]]",[321.146437],101019
+135570,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1160.53,407.07]]",[321.83072],101020
+135571,149143,"Bony fishes","Biota > Fishes > Bony fishes",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1307.29,839.57]]",[322.387427],101021
+135572,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[628.69,440.71]]",[322.837581],101022
+135573,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1552.83,402.08]]",[323.344018],101023
+135575,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[109.14,534.32]]",[327.437573],101025
+135576,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1624.77,247.53]]",[327.437573],101026
+135577,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1683.27,864.54]]",[328.242428],101027
+135579,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1250.56,433.77]]",[328.796617],101029
+135580,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[127.59,273.19]]",[331.063484],101030
+135581,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1435.87,532.68]]",[337.583109],101031
+135582,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[556.71,481.65]]",[338.242955],101032
+135583,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[237.59,501.63]]",[342.084585],101033
+135584,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1581.24,461.36]]",[344.147826],101034
+135585,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[724.47,409.38]]",[344.858418],101035
+135586,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[566.12,441.04]]",[345.815193],101036
+135587,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[969.72,931.08]]",[347.65616],101037
+135588,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[975.89,229.99]]",[348.705804],101038
+135589,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1448.54,224.05]]",[348.705804],101039
+135590,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[652.69,734.84]]",[348.705804],101040
+135591,149468,"Polyzoa opuntia","Biota > Ascidians > Unstalked > Colonial > Polyzoa opuntia",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[943.02,428.45]]",[348.705804],101041
+135592,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1768.4,390.31]]",[365.966842],101042
+135593,149343,"Sea stars","Biota > Echinoderms > Sea stars",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1060.91,778.45]]",[369.275326],101043
+135594,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[365.17,714.98]]",[370.287428],101044
+135595,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[776.14,728.12]]",[376.973176],101045
+135596,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1486.34,160.97]]",[385.008988],101046
+135597,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[511.02,854.87]]",[387.358897],101047
+135598,149143,"Bony fishes","Biota > Fishes > Bony fishes",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[224.1,262.22]]",[389.870536],101048
+135599,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1628.24,693.78]]",[394.990314],101049
+135600,149459,"Carcinus maenas","Biota > Crustacea > Crabs > True crabs > Carcinus maenas",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1146.99,632.8]]",[411.019291],101050
+135601,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[276.12,384.43]]",[423.374161],101051
+135609,149387,"True crabs","Biota > Crustacea > Crabs > True crabs",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[346.8,815.09]]",[487.060084],101059
+135610,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[59.75,314.41]]",[471.879482],101060
+135611,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[51.11,522.23]]",[491.141147],101061
+135612,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1817.31,583.68]]",[501.816315],101062
+135613,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[61.43,178.41]]",[507.087446],101063
+135614,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[266.06,252]]",[507.087446],101064
+135615,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[26.26,209.03]]",[508.663369],101065
+135616,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[31.93,113.02]]",[509.566724],101066
+135617,149462,"Peltarion spinulosum","Biota > Crustacea > Crabs > True crabs > Peltarion spinulosum",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[359.45,366.73]]",[524.158642],101067
+135618,149239,Gastropods,"Biota > Molluscs > Gastropods",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1885.67,190.15]]",[533.927522],101068
+135619,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1894.63,55.91]]",[538.718948],101069
+135620,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1339.39,291.49]]",[542.363334],101070
+135621,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[83.07,400.24]]",[543.002173],101071
+135622,149460,"Leurocyclus tuberculosus","Biota > Crustacea > Crabs > True crabs > Leurocyclus tuberculosus",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1113.99,419.17]]",[550.727352],101072
+135623,149479,"Odontocymbiola magellanica","Biota > Molluscs > Gastropods > Odontocymbiola magellanica",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[959.04,385.01]]",[577.747034],101073
+135983,149452,"Anasterias antarctica","Biota > Echinoderms > Sea stars > Anasterias antarctica",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1780.26,967.25]]",[130.836327],101428
+135984,149452,"Anasterias antarctica","Biota > Echinoderms > Sea stars > Anasterias antarctica",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[49.04,504.88]]",[174.056971],101429
+136053,149451,"Allostichaster capensis","Biota > Echinoderms > Sea stars > Allostichaster capensis",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[134.87,761.05]]",[38.18026],101490
+136063,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1341.37,747.21]]",[193.696901],101500
+136064,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1112.1,670.52]]",[204.116467],101501
+136065,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1247.28,553.86]]",[210.616929],101502
+136066,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[775.79,302.9]]",[210.616929],101503
+136067,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[158.77,367.98]]",[212.801927],101504
+136068,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[295.02,367.65]]",[213.287176],101505
+136069,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[831.68,365.01]]",[214.479275],101506
+136070,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1820.4,616.88]]",[215.491933],101507
+136071,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[994.41,393.09]]",[215.491933],101508
+136072,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1750.69,130.35]]",[216.841715],101509
+136073,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[636.78,57.51]]",[219.409221],101510
+136074,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1003.93,366.09]]",[219.923281],101511
+136075,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1568.5,418.87]]",[220.390888],101512
+136076,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[327.94,445.84]]",[220.390888],101513
+136077,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1063.98,438.59]]",[220.390888],101514
+136078,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[959.36,502.32]]",[220.88734],101515
+136079,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1538.72,357.52]]",[221.183665],101516
+136080,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1357.47,209.54]]",[221.424819],101517
+136081,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1023.03,151.75]]",[221.889931],101518
+136082,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1348.1,343.26]]",[222.318504],101519
+136083,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[360.91,290.13]]",[222.318504],101520
+136084,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[679.16,91.11]]",[222.318504],101521
+136085,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1489.14,307.52]]",[222.725239],101522
+136086,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[752.29,636.99]]",[223.899882],101523
+136087,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1387.09,650.65]]",[223.899882],101524
+136088,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[697.47,286.81]]",[223.899882],101525
+136089,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[161.61,890.04]]",[228.853069],101526
+136090,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1381.61,265.78]]",[228.853069],101527
+136091,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[159.04,595.8]]",[237.721855],101528
+136092,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[591.94,460.27]]",[253.221825],101529
+136093,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[691.58,111.3]]",[253.221825],101530
+136095,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[264.19,146.61]]",[253.425626],101532
+136096,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[122.87,260.83]]",[253.425626],101533
+136097,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[763.36,243.39]]",[253.425626],101534
+136098,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1605.94,369.16]]",[253.589748],101535
+136099,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[490.31,273.65]]",[254.052311],101536
+136100,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[453.22,378.33]]",[254.555536],101537
+136101,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1471.38,232.91]]",[254.555536],101538
+136102,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1636.8,234.07]]",[254.555536],101539
+136103,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[515.03,552.15]]",[256.704207],101540
+136104,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1454.21,443.48]]",[256.704207],101541
+136105,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[267.26,182.9]]",[257.552507],101542
+136106,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[646.98,348.34]]",[258.191275],101543
+136107,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[944.89,500.57]]",[259.214374],101544
+136108,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[113.96,298.1]]",[259.585582],101545
+136109,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[151.56,399.58]]",[260.482874],101546
+136110,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1677.12,279.29],[1696.39,587.26]]","[261.071118,261.302926]",101547
+136111,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[54.03,329.01]]",[263.97977],101548
+136112,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[351.35,272.19]]",[264.541586],101549
+136113,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1651.3,408.23]]",[265.418019],101550
+136114,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1199.21,423.29]]",[266.226697],101551
+136115,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1414.98,384.84]]",[266.70514],101552
+136117,149143,"Bony fishes","Biota > Fishes > Bony fishes",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1402.65,348.61]]",[267.344619],101554
+136122,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1883.08,654.35]]",[277.414683],101559
+136123,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1083.53,562.73]]",[270.152108],101560
+136125,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1808.45,167.08]]",[276.74063],101562
+136126,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[960.46,917.09]]",[279.237311],101563
+136127,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[765.05,636.14]]",[279.237311],101564
+136129,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[217.1,344.19]]",[279.237311],101566
+136134,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1164.7,541.8]]",[283.030897],101571
+136135,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[505.16,103.33]]",[283.030897],101572
+136136,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[335.2,246.67]]",[284.470621],101573
+136137,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[982.8,467.06]]",[286.566614],101574
+136138,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[454.48,384.92]]",[288.091843],101575
+136139,149482,"Undaria pinnatifida","Biota > Macroalgae > Large canopy-forming > Brown > Undaria pinnatifida",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1452.08,754.33]]",[288.091843],101576
+136140,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1154.68,774.07]]",[292.477675],101577
+136141,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[339.94,519.22]]",[292.477675],101578
+136142,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1471.83,606.01]]",[298.043064],101579
+136143,149483,"Macrocystis pyrifera","Biota > Macroalgae > Large canopy-forming > Brown > Macrocystis pyrifera",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[259.12,405.74]]",[305.055294],101580
+136144,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[840.19,906.75]]",[315.221148],101581
+136146,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[742.86,583.59]]",[316.263928],101583
+136147,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[456.73,133.82]]",[316.263928],101584
+136148,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1435.58,178.85]]",[316.263928],101585
+136150,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1334.7,709.37]]",[317.439018],101587
+136151,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1439.87,444.66]]",[317.439018],101588
+136153,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[613.24,552.57]]",[320.045147],101590
+136154,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[234.02,276.13]]",[320.045147],101591
+136156,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1212.8,892.5]]",[324.408461],101593
+136159,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[208.07,695.01]]",[340.814674],101596
+136161,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1387.43,761.66]]",[357.490253],101598
+136162,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[168.46,123.28]]",[357.490253],101599
+136163,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1755.57,421.81]]",[358.033464],101600
+136164,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[501.2,504.82]]",[358.033464],101601
+136165,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1357.42,473.89]]",[358.033464],101602
+136167,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1364.15,320.93]]",[358.47509],101604
+136168,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1594.09,474.15]]",[358.47509],101605
+136169,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[530.44,372.15]]",[358.47509],101606
+136170,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1489.86,825.23]]",[359.213578],101607
+136171,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1078.07,505.26]]",[359.213578],101608
+136172,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[312.19,744.26]]",[359.213578],101609
+136173,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[374.08,414.96]]",[359.213578],101610
+136174,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1852.78,396.51]]",[359.213578],101611
+136175,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1019.22,271.87]]",[359.213578],101612
+136176,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[598.82,383.67]]",[363.600026],101613
+136179,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1515.87,506.39]]",[395.611515],101616
+136180,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[529.17,721.58]]",[395.611515],101617
+136181,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1799.3,585.67],[1805.2,598.18],[1811.02,613.44],[1817.32,627.75],[1824.29,642.43],[1830.45,657.25],[1837.28,673.04],[1844.8,688.48],[1852.76,705.2],[1858.63,715.98],[1866.54,732.4],[1875.27,752.1],[1882.5,765.93],[1890.85,781.7],[1899.43,799.91],[1905.53,815.63],[1885.7,827.42],[1890.47,843.01],[1880.92,871.37],[1878.08,874.83]]","[397.257718,397.28,397.29,397.3,397.31,397.32,397.33,397.34,397.35,397.36,397.37,397.38,397.39,397.4,397.41,397.42,397.44,397.45,397.47,397.48]",101618
+136183,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1618.11,450.98]]",[403.702316],101620
+136185,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[143.88,330.58]]",[406.317348],101622
+136187,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[541.81,359.82]]",[422.578731],101624
+136190,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[561.53,772.34]]",[436.012524],101627
+136191,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1854.1,410.95]]",[440.406809],101628
+136194,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[73.39,540.22]]",[465.510131],101631
+136197,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[888.59,618.55]]",[480.038244],101634
+136198,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[203.86,502.49]]",[495.170941],101635
+136199,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1693.49,548.31]]",[535.464085],101636
+136200,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[805.89,352.56]]",[552.107325],101637
+136201,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[188.52,364.18]]",[553.835171],101638
+136202,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[579.96,673.4]]",[561.555101],101639
+136203,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[100.41,587.92]]",[562.521166],101640
+136204,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[501.64,690.26]]",[564.234449],101641
+136205,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[429.94,466.33]]",[566.236727],101642
+136206,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1610.44,369.19]]",[566.711757],101643
+136207,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[522.68,808.59]]",[576.395684],101644
+136208,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1371.44,282.99]]",[583.388474],101645
+136209,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1107.21,653.18]]",[584.610386],101646
+136210,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[804.79,512.64]]",[585.985073],101647
+136211,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1906.13,294.91]]",[594.094588],101648
+136212,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1185.01,727.75]]",[594.094588],101649
+136213,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[968.26,116.06]]",[594.094588],101650
+136214,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1189.56,273.28]]",[594.094588],101651
+136215,149486,Gracilaria,"Biota > Macroalgae > Erect fine branching > Red > Gracilaria",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1763.55,235.72]]",[594.466588],101652
+136437,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1511.6,814.57]]",[9.538214],101872
+136438,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[795.85,312.86]]",[11.979408],101873
+136439,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[973.24,246.39]]",[27.589215],101874
+136440,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[628.04,658.11]]",[32.188486],101875
+136441,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1319.36,353.94]]",[33.390714],101876
+136599,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[725.51,441.18]]",[12.062369],102029
+136600,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[290.46,421.92]]",[19.073249],102030
+136601,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1039.06,305.77]]",[27.533714],102031
+136602,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[751.3,475.02]]",[32.091831],102032
+136603,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1398.02,393.56]]",[33.289784],102033
+136604,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1234.66,794.19]]",[35.955157],102034
+136606,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1706.79,410.35]]",[71.964807],102036
+136607,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1401.62,303.54]]",[30],102037
+136608,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[973.67,376.6]]",[58.461538],102038
+136609,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[830.1,308.98]]",[83.442228],102039
+136610,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1547.08,447.95]]",[101.268892],102040
+136611,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1473.82,364]]",[103.289743],102041
+136612,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1057.87,442.34]]",[108.606191],102042
+136613,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[533,433.83]]",[123.02928],102043
+136614,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[989.66,394.94]]",[126.210416],102044
+136615,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[892.6,718.99]]",[139.712414],102045
+136616,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[824.43,165.95]]",[140.7579],102046
+136617,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[929.53,456.69]]",[142.26128],102047
+136618,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[197.15,489.08]]",[143.150614],102048
+136619,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[957.83,553.18]]",[144.354647],102049
+136620,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[932.93,488.54]]",[150.146242],102050
+136621,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1043.83,395.08]]",[168.649312],102051
+136622,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[363.81,369.59]]",[170.287672],102052
+136623,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1072.6,994.1]]",[178.279095],102053
+136624,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1074.24,196.99]]",[180.758209],102054
+136625,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1017.33,484.79]]",[184.692716],102055
+136626,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[774.08,936.37]]",[188.863927],102056
+136627,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[842.46,356.76]]",[188.863927],102057
+136628,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[532.72,965.63]]",[192.924429],102058
+136629,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[811.83,610.52]]",[197.355994],102059
+136630,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[718.83,183.28]]",[197.355994],102060
+136631,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[868.15,149.05]]",[200.525614],102061
+136632,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[795.73,230.39]]",[203.526121],102062
+136633,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[776.47,540.73]]",[204.180767],102063
+136634,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1069.16,614.97]]",[209.847821],102064
+136635,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[938.67,553.61]]",[211.523033],102065
+136636,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1372.34,360.47]]",[225.013775],102066
+136637,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[971.65,973.3]]",[224.82887],102067
+136638,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[824.59,529.82]]",[229.970148],102068
+136640,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[882.28,991.98]]",[243.497513],102070
+136641,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1234.78,833.57]]",[252.554248],102071
+136642,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1206.65,662.14]]",[253.594178],102072
+136643,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1114.95,804.9]]",[260.693561],102073
+136644,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[948.6,642.06]]",[267.730635],102074
+136645,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[851.21,295.15]]",[271.538461],102075
+136646,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[890.41,482.94]]",[276.862902],102076
+136647,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[700.91,592.71]]",[279.818897],102077
+136648,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[787.13,663.81]]",[280.452053],102078
+136649,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[886.27,519.54]]",[284.765494],102079
+136650,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[688.07,390.47]]",[293.149478],102080
+136651,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1161.8,623.22]]",[297.749123],102081
+136652,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1055.74,638.2]]",[299.105628],102082
+136653,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[722.24,489.17]]",[305.075968],102083
+136654,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1131.67,460.02]]",[306.328947],102084
+136657,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1121.51,349.25]]",[312.096779],102087
+136661,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[709.53,1032.32]]",[316.856818],102091
+136662,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[746.15,561.58]]",[317.845055],102092
+136663,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1082.34,387.3]]",[322.089247],102093
+136664,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[719.43,442.49]]",[325.249445],102094
+136665,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[593.51,495.06]]",[328.604075],102095
+136666,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[963.13,188.36]]",[334.21909],102096
+136667,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[628.84,650.61]]",[338.043316],102097
+136668,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[948.18,448.2]]",[341.636584],102098
+136669,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[782.83,658.45]]",[344.736994],102099
+136670,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[971.73,532.69]]",[349.118076],102100
+136671,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1113.19,444.7]]",[351.249682],102101
+136673,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[918.18,688.62]]",[357.99352],102103
+136674,149228,"Fine sand (no shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Fine sand (no shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1003.04,1009.86]]",[359.970513],102104
+136675,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[419.06,867.36]]",[367.732284],102105
+136676,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[307.68,400.08]]",[373.604141],102106
+136677,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1465.22,667.15]]",[382.660166],102107
+136678,149332,Rock,"Physical > Substrate > Consolidated (hard) > Rock",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[646.99,712.24],[771.75,874.44]]","[383.900319,387.2441]",102108
+136679,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[937.95,482.2]]",[392.584023],102109
+136680,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1214.03,504.61]]",[391.950329],102110
+136681,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1603.21,198.34]]",[393.877689],102111
+136682,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1103.01,738.11]]",[397.870331],102112
+136683,149171,Cobbles,"Physical > Substrate > Consolidated (hard) > Cobbles",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[749.31,802.37]]",[400.220859],102113
+136684,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[898.2,768.15]]",[404.756523],102114
+136685,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1103.76,486.8]]",[411.337075],102115
+136686,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1186.23,588.69]]",[416.199456],102116
+136687,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1175.55,589.42]]",[420.830553],102117
+136688,149138,Bioturbated,"Physical > Bedforms > Bioturbated",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[956.34,435.44]]",[421.303871],102118
+136689,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1038.37,467.18]]",[424.263764],102119
+136690,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[782.56,522.28]]",[432.389856],102120
+136691,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1132.88,626.87]]",[441.213485],102121
+136692,149138,Bioturbated,"Physical > Bedforms > Bioturbated",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[792.73,488.98]]",[441.213485],102122
+136693,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1038.21,551.91]]",[451.069827],102123
+136694,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[872.9,619.54]]",[461.659078],102124
+136695,149138,Bioturbated,"Physical > Bedforms > Bioturbated",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[969.51,507.17]]",[470.836804],102125
+136696,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[989.78,513.33]]",[476.901948],102126
+136697,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[713.39,735.42]]",[488.832402],102127
+136698,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[929.9,661.08]]",[499.485061],102128
+136699,149138,Bioturbated,"Physical > Bedforms > Bioturbated",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1099.7,462.61]]",[511.159676],102129
+136700,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[951.45,440.95]]",[512.840963],102130
+136701,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1032.55,389.96]]",[524.912035],102131
+136702,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1060.3,369.29]]",[538.992174],102132
+136703,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1262.14,648.62]]",[551.770195],102133
+136704,149242,"Gravel (2-10mm)","Physical > Substrate > Unconsolidated (soft) > Pebble / gravel > Gravel (2-10mm)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1096.68,513.13]]",[560.626333],102134
+136705,149242,"Gravel (2-10mm)","Physical > Substrate > Unconsolidated (soft) > Pebble / gravel > Gravel (2-10mm)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1232.97,210.34]]",[563.198849],102135
+136706,149242,"Gravel (2-10mm)","Physical > Substrate > Unconsolidated (soft) > Pebble / gravel > Gravel (2-10mm)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1311.37,856.35]]",[565.708539],102136
+136707,149242,"Gravel (2-10mm)","Physical > Substrate > Unconsolidated (soft) > Pebble / gravel > Gravel (2-10mm)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[847.94,761.79]]",[568.500215],102137
+136708,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[854.24,707.15]]",[571.870532],102138
+136709,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[1052.37,436.39]]",[585.959192],102139
+136710,149170,"Coarse sand (with shell fragments)","Physical > Substrate > Unconsolidated (soft) > Sand / mud (<2mm) > Coarse sand (with shell fragments)",508,Gonzalo,Bravo,1874,0001_GB,1,Point,"[[987.39,492.6]]",[600],102140

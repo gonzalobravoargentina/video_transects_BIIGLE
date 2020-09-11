@@ -1,18 +1,16 @@
 
 #Scrip:
-# Read video annotations from Biiglr
-# Read GPX track from the video transects
-# Georeference video annotations
+# Read video annotations from Biigle Software 
+# Read GPX track from GARMIN GPS used for video transects
+# Merge GPS position with video annotations using time 
 
 
 #READ VIDEO ANNOTATIONS-------
 # Source https://biigle.de/projects/477
 
-
-#Set the working directory to the folder "Biigle annotations" and read MOV_0001_GB.csv
-library(tcltk)
-setwd(tk_choose.dir(getwd(), "Choose a suitable folder"))
-video.annotations <- read.csv("MOV_0001_GB.csv")
+#Read file in Biigle annotations folder 
+setwd(paste0(getwd(),"/Biigle annotations"))
+video.annotations <- read.csv("MOV_0001_MOV_0002_GB.csv")
 
 #time is in json array []
 #we use jsonlite to transform into r column 
@@ -29,16 +27,18 @@ video.annotations<- do.call(rbind,video.annotations)
 colnames(video.annotations)[15] <- "frame in secons"
 video.annotations$frame.secs <- round(video.annotations$`frame in secons`)
 
-#use original video name as in Paralenz log 
-video.annotations$video_name <- "MOV_0001"
+#ADD a column with the video names as found in the Paralenz log file
+library(stringr)
+video.annotations$video_name <- paste0("MOV_",str_sub(video.annotations$video_filename,-11,-8))
 
 
 # READ .GPX -------------------
-# GPS MODEL: 
-# recorded one point each 3 secs
+# GPS MODEL: GARMIN
+# recorded one point each 5 secs
 #Choose as WD folder GPX_files
-library(tcltk)
-setwd(tk_choose.dir(getwd(), "Choose a suitable folder"))
+setwd("..")
+setwd(paste0(getwd(),"/GPX files"))
+
 #in this example we have only one .gpx file , however the code is designed for a list of .gpx
 filesGPX <- list.files(pattern = "*.gpx")#get a list of files .gpx in wd
 
@@ -47,6 +47,7 @@ library(rgdal)
 gpx <- lapply(setNames(filesGPX, make.names(gsub("*.gpx$", "",filesGPX))), 
               function(f) { readOGR(dsn=f, layer="track_points") }
 )
+
 
 #create a list with coordinates and time from all de gpx files
 gpxlist <- lapply(gpx,function(f) { data.frame(f@coords,f$time) })
@@ -68,16 +69,21 @@ colnames(track) <- c("lon","lat","f.time","timeUTC","timeLOCAL")
 #PLOT the track in map
 library(leaflet)
 leaflet(track) %>% addTiles() %>%
-  addCircleMarkers(~ lon, ~ lat, radius = 2)%>%
+  addCircleMarkers(~ lon, ~ lat, radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") 
+
 
 
 
 #READ PARALENZ LOG------ 
 library(plyr)
 library(readr)
-#get a list of CSV files
-setwd(tk_choose.dir(getwd(), "Choose a suitable folder"))
+#Set wd to "Parlenz log  Folder"
+setwd("..")
+setwd(paste0(getwd(),"/Paralenz log"))
+
+
+#get a list of all the CSV files
 filesPARALENZ <- list.files(pattern = "*.CSV",full.names=TRUE)
 
 #Read all CSV files an import all in one dataframe
@@ -95,55 +101,58 @@ PARALENZ <- na.omit(PARALENZ, cols = "Image/video-file")
 #created column videos as factor
 PARALENZ$video <- as.factor(PARALENZ$`Image/video-file`)
 
-#add columns with seconds of video (each video of ~10 min = 60 secs)
+#add columns with seconds of video (each video of ~10 min = 60 secs). In log the data is stored each sec. 
 library(dplyr)
-PARALENZ <- PARALENZ %>% group_by(video) %>% mutate(frame.secs = seq_len(n()))
+PARALENZ <- PARALENZ %>% group_by(video) %>% dplyr::mutate(frame.secs = seq_len(n()))
 
 colnames(PARALENZ)[4] <- "video_name"
 
 
 
 #MERGE PARALENZ log and Biigle annotations
-#select the video you want to merge 
-PARALENZ_MOV_0001 <- subset(PARALENZ,video_name=="MOV_0001")
-#loop for merging PARALENZ AND METADATA using a time between +- 3 secs
-for (i in 1:length(PARALENZ_MOV_0001$frame.secs)){
-  isbewteen<-between(video.annotations$frame.secs, PARALENZ_MOV_0001$frame.secs[i], PARALENZ_MOV_0001$frame.secs[i]+3)
-  video.annotations$video_name.PARALENZ[isbewteen ]<-PARALENZ_MOV_0001$video_name[i]
-  video.annotations$depth.PARALENZ[isbewteen ]<-PARALENZ_MOV_0001$Depth[i]
-  video.annotations$Temp.PARALENZ[isbewteen ]<-PARALENZ_MOV_0001$Temperature[i]
-  video.annotations$dive.time.PARALENZ[isbewteen ]<-PARALENZ_MOV_0001$Time[i]
-}
-
-#Transform to time format 
-video.annotations$dive.time.PARALENZ <- strptime(video.annotations$dive.time.PARALENZ, "%Y:%m:%d %H:%M:%S")
+library(dplyr)
+video.annotations.Paralenz <- left_join(video.annotations,PARALENZ , by=c("frame.secs","video_name"))
 
 
+#Merge GPS position with video annotations using time------
 #MERGE gpx Track and annotations
 for (i in 1:length(track$timeLOCAL)){
-  isbewteen<-between(video.annotations$dive.time.PARALENZ, track$timeLOCAL[i], track$timeLOCAL[i]+5)
-  video.annotations$GPSLongitude[isbewteen ]<-track$lon[i]
-  video.annotations$GPSLatitude[isbewteen ]<-track$lat[i]
-  video.annotations$timegpsUTC[isbewteen ]<-track$f.time[i]
+  isbewteen<-between(video.annotations.Paralenz$timeLOCAL, track$timeLOCAL[i], track$timeLOCAL[i]+5)
+  video.annotations.Paralenz$GPSLongitude[isbewteen ]<-track$lon[i]
+  video.annotations.Paralenz$GPSLatitude[isbewteen ]<-track$lat[i]
+  video.annotations.Paralenz$timegpsUTC[isbewteen ]<-track$f.time[i]
 }
 
+#set original wd 
+setwd("..")
 
+
+
+#MAPS-----
 #view photos in a map
 #Point of map center
 x1 <- -65.809794
 y1 <- -45.020866
-#color gradiente for depth
+
+#Color for video Name 
+
+#set colors for videos names:
+pal <- colorFactor(
+  palette = 'Dark2',
+  domain = video.annotations.Paralenz$video
+)
+
 library(leaflet)
-leaflet(video.annotations) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
+leaflet(video.annotations.Paralenz) %>% addTiles() %>%
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~video_name,color = ~pal(video),radius = 2)%>%
 addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
 
-#gracilaria
-leaflet(subset(video.annotations,label_name=="Gracilaria")) %>% addTiles() %>%
+#See Crabs in transect 
+leaflet(subset(video.annotations.Paralenz,label_name=="Leurocyclus tuberculosus")) %>% addTiles() %>%
   addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
-
+#https://www.seascapemodels.org/rstats/2016/11/23/mapping-abundance-photos.html#navbar

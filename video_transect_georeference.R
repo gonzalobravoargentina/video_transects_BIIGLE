@@ -69,7 +69,7 @@ colnames(track) <- c("lon","lat","f.time","timeUTC","timeLOCAL")
 #PLOT the track in map
 library(leaflet)
 leaflet(track) %>% addTiles() %>%
-  addCircleMarkers(~ lon, ~ lat, radius = 1)%>%
+  addCircles(~ lon, ~ lat, radius = 1,color = "orange",stroke = FALSE)%>%
   addProviderTiles("Esri.WorldImagery") 
 
 

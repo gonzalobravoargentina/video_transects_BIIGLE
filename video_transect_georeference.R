@@ -10,7 +10,7 @@
 
 #Read file in Biigle annotations folder 
 setwd(paste0(getwd(),"/Biigle annotations"))
-video.annotations <- read.csv("MOV_0001_MOV_0002_GB.csv")
+video.annotations <- read.csv("2736-google-cloud 3.csv")
 
 #time is in json array []
 #we use jsonlite to transform into r column 
@@ -29,7 +29,7 @@ video.annotations$frame.secs <- round(video.annotations$`frame in secons`)
 
 #ADD a column with the video names as found in the Paralenz log file
 library(stringr)
-video.annotations$video_name <- paste0("MOV_",str_sub(video.annotations$video_filename,-11,-8))
+video.annotations$video_name <- paste0("MOV_",str_sub(video.annotations$video_filename,-11,-5))
 
 
 # READ .GPX -------------------
@@ -89,6 +89,8 @@ filesPARALENZ <- list.files(pattern = "*.CSV",full.names=TRUE)
 #Read all CSV files an import all in one dataframe
 PARALENZ = ldply(filesPARALENZ, read_csv)
 
+video <- as.data.frame(unique(PARALENZ$`Image/video-file`))
+
 #Transforme time column to POSIXlt (local time Argentina)
 PARALENZ$timeLOCAL <- strptime(PARALENZ$Time, "%Y:%m:%d %H:%M:%S")
 
@@ -96,7 +98,7 @@ PARALENZ$timeLOCAL <- strptime(PARALENZ$Time, "%Y:%m:%d %H:%M:%S")
 PARALENZ$Depth <- as.numeric(PARALENZ$Depth)
 
 #Eliminate NA rows in column Image/video-file
-PARALENZ <- na.omit(PARALENZ, cols = "Image/video-file")
+#PARALENZ <- na.omit(PARALENZ, cols = "Image/video-file")
 
 #created column videos as factor
 PARALENZ$video <- as.factor(PARALENZ$`Image/video-file`)
@@ -106,14 +108,13 @@ library(dplyr)
 PARALENZ <- PARALENZ %>% group_by(video) %>% dplyr::mutate(frame.secs = seq_len(n()))
 
 colnames(PARALENZ)[4] <- "video_name"
-
-
+video <- as.data.frame(unique(PARALENZ$video_name))
 
 #MERGE PARALENZ log and Biigle annotations
 library(dplyr)
 video.annotations.Paralenz <- left_join(video.annotations,PARALENZ , by=c("frame.secs","video_name"))
 
-
+video.annotations.Paralenz$video_name
 #Merge GPS position with video annotations using time------
 #MERGE gpx Track and annotations
 for (i in 1:length(track$timeLOCAL)){
@@ -126,7 +127,7 @@ for (i in 1:length(track$timeLOCAL)){
 #set original wd 
 setwd("..")
 
-
+video2 <- as.data.frame(unique(video.annotations.Paralenz$video))
 
 #MAPS-----
 #view photos in a map
@@ -150,9 +151,10 @@ addProviderTiles("Esri.WorldImagery") %>%
 
 
 #See Crabs in transect 
-leaflet(subset(video.annotations.Paralenz,label_name=="Leurocyclus tuberculosus")) %>% addTiles() %>%
+leaflet(subset(video.annotations.Paralenz,label_name=="Gracilaria")) %>% addTiles() %>%
   addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
 #https://www.seascapemodels.org/rstats/2016/11/23/mapping-abundance-photos.html#navbar
+

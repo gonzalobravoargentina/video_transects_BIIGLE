@@ -10,7 +10,7 @@
 
 #Read file in Biigle annotations folder 
 setwd(paste0(getwd(),"/Biigle annotations"))
-video.annotations <- read.csv("2736-google-cloud 3.csv")
+video.annotations <- read.csv("biigle annotations.csv")
 
 #time is in json array []
 #we use jsonlite to transform into r column 
@@ -151,6 +151,18 @@ addProviderTiles("Esri.WorldImagery") %>%
 
 
 #See Crabs in transect 
+leaflet(subset(video.annotations.Paralenz,label_name=="Leurocyclus tuberculosus")) %>% addTiles() %>%
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
+  addProviderTiles("Esri.WorldImagery") %>%  
+  setView(lng = x1, lat = y1, zoom = 15)
+
+#See rock in transect 
+leaflet(subset(video.annotations.Paralenz,label_name=="Rock")) %>% addTiles() %>%
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
+  addProviderTiles("Esri.WorldImagery") %>%  
+  setView(lng = x1, lat = y1, zoom = 15)
+
+#See Gracilaria in transect 
 leaflet(subset(video.annotations.Paralenz,label_name=="Gracilaria")) %>% addTiles() %>%
   addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") %>%  
@@ -158,3 +170,5 @@ leaflet(subset(video.annotations.Paralenz,label_name=="Gracilaria")) %>% addTile
 
 #https://www.seascapemodels.org/rstats/2016/11/23/mapping-abundance-photos.html#navbar
 
+
+write.csv(video.annotations.Paralenz, file = "Data.csv")

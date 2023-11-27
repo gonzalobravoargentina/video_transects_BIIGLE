@@ -14,7 +14,7 @@ This script performs the following tasks:
 ## Maps and Visualization
 - Plots the GPS track on a map using leaflet.
 - Adjusts the GPS position by 10 seconds to account for diver movement.
-- Creates maps highlighting specific annotations like crabs, rocks, and Gracilaria with varying circle sizes and colors based on annotation density.
+- Creates maps highlighting specific annotations like crabs, rocks, and Gracilaria with varying circle sizes and colors based on annotation density (see map example).
 ![](https://github.com/gonzalobravoargentina/video_transects_BIIGLE/blob/master/Map_example.png)
 
 

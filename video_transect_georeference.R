@@ -8,9 +8,12 @@
 #READ VIDEO ANNOTATIONS-------
 # Source https://biigle.de/projects/477
 
+#Set forlders with data
+Annotations <- "Biigle annotations"
+
 #Read file in Biigle annotations folder 
-setwd(paste0(getwd(),"/Biigle annotations"))
-video.annotations <- read.csv("biigle annotations.csv")
+library(readr)
+video.annotations <- read.csv(file.path(Annotations,"biigle annotations.csv"))
 
 #time is in json array []
 #we use jsonlite to transform into r column 
@@ -35,19 +38,15 @@ video.annotations$video_name <- paste0("MOV_",str_sub(video.annotations$video_fi
 # READ .GPX -------------------
 # GPS MODEL: GARMIN
 # recorded one point each 5 secs
-#Choose as WD folder GPX_files
-setwd("..")
-setwd(paste0(getwd(),"/GPX files"))
 
-#in this example we have only one .gpx file , however the code is designed for a list of .gpx
-filesGPX <- list.files(pattern = "*.gpx")#get a list of files .gpx in wd
+#get a list of all the CSV files in the "GPS" folder
+filesGPX <- list.files(path = "GPX files", pattern = "*.gpx", full.names = TRUE)
 
 #read gpx files and store them all in a list
 library(rgdal)
 gpx <- lapply(setNames(filesGPX, make.names(gsub("*.gpx$", "",filesGPX))), 
               function(f) { readOGR(dsn=f, layer="track_points") }
 )
-
 
 #create a list with coordinates and time from all de gpx files
 gpxlist <- lapply(gpx,function(f) { data.frame(f@coords,f$time) })
@@ -66,6 +65,11 @@ track$timeLOCAL <- force_tzs(track$timeUTC, "UTC", tzone_out = "America/Argentin
 
 colnames(track) <- c("lon","lat","f.time","timeUTC","timeLOCAL")
 
+
+# As the GPS is in the boat, the diver past 10 sec later so we Adjust the GPS position by 10 seconds
+track$timecorrected <- track$timeLOCAL + 10
+
+
 #PLOT the track in map
 library(leaflet)
 leaflet(track) %>% addTiles() %>%
@@ -78,13 +82,10 @@ leaflet(track) %>% addTiles() %>%
 #READ PARALENZ LOG------ 
 library(plyr)
 library(readr)
-#Set wd to "Parlenz log  Folder"
-setwd("..")
-setwd(paste0(getwd(),"/Paralenz log"))
-
 
 #get a list of all the CSV files
-filesPARALENZ <- list.files(pattern = "*.CSV",full.names=TRUE)
+filesPARALENZ<- list.files(path = "Paralenz log", pattern = "*.CSV", full.names = TRUE)
+
 
 #Read all CSV files an import all in one dataframe
 PARALENZ = ldply(filesPARALENZ, read_csv)
@@ -115,19 +116,17 @@ library(dplyr)
 video.annotations.Paralenz <- left_join(video.annotations,PARALENZ , by=c("frame.secs","video_name"))
 
 video.annotations.Paralenz$video_name
+
 #Merge GPS position with video annotations using time------
 #MERGE gpx Track and annotations
-for (i in 1:length(track$timeLOCAL)){
-  isbewteen<-between(video.annotations.Paralenz$timeLOCAL, track$timeLOCAL[i], track$timeLOCAL[i]+5)
+for (i in 1:length(track$timecorrected)){
+  isbewteen<-between(video.annotations.Paralenz$timeLOCAL, track$timecorrected[i], track$timecorrected[i]+5)
   video.annotations.Paralenz$GPSLongitude[isbewteen ]<-track$lon[i]
   video.annotations.Paralenz$GPSLatitude[isbewteen ]<-track$lat[i]
   video.annotations.Paralenz$timegpsUTC[isbewteen ]<-track$f.time[i]
 }
 
-#set original wd 
-setwd("..")
 
-video2 <- as.data.frame(unique(video.annotations.Paralenz$video))
 
 #MAPS-----
 #view photos in a map
@@ -162,13 +161,38 @@ leaflet(subset(video.annotations.Paralenz,label_name=="Rock")) %>% addTiles() %>
   addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
-#See Gracilaria in transect 
-leaflet(subset(video.annotations.Paralenz,label_name=="Gracilaria")) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
-  addProviderTiles("Esri.WorldImagery") %>%  
+#See Gracilaria in transect, in the case of gracilaria we have from 1 to 5 annotation per frame , indicantin density. 
+
+# Define a color palette
+color_palette <- colorRampPalette(c("lightblue", "blue"))
+
+# Merge count data with original data
+merged_data <- merge(video.annotations.Paralenz, counts, by = "frame in secons", all.x = TRUE)
+
+# Filter to remove rows with NA in the 'count' column
+merged_data <- merged_data[complete.cases(merged_data$count), ]
+
+# Create the map
+map <- leaflet() %>%
+  addTiles() %>%
+  addProviderTiles("Esri.WorldImagery") %>%
   setView(lng = x1, lat = y1, zoom = 15)
 
-#https://www.seascapemodels.org/rstats/2016/11/23/mapping-abundance-photos.html#navbar
+# Add circles with colors based on the number of annotations
+map <- addCircleMarkers(
+  map,
+  data = merged_data,
+  lng = ~GPSLongitude,
+  lat = ~GPSLatitude,
+  radius = ~ifelse(count == 5, 6, count * 2),  # Adjust circle size
+  color = ~color_palette(5)[count],
+  fillOpacity = 0.7
+)
+
+# Show the map
+map
 
 
+
+#Save data in a csv file.
 write.csv(video.annotations.Paralenz, file = "Data.csv")

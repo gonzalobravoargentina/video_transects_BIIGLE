@@ -13,7 +13,7 @@ Annotations <- "Biigle annotations"
 
 #Read file in Biigle annotations folder 
 library(readr)
-video.annotations <- read.csv(file.path(Annotations,"biigle annotations.csv"))
+video.annotations <- read.csv(file.path(Annotations,"2736-google-cloud.csv"))
 
 #time is in json array []
 #we use jsonlite to transform into r column 
@@ -67,7 +67,7 @@ colnames(track) <- c("lon","lat","f.time","timeUTC","timeLOCAL")
 
 
 # As the GPS is in the boat, the diver past 10 sec later so we Adjust the GPS position by 10 seconds
-track$timecorrected <- track$timeLOCAL + 10
+track$timeLOCAL_corrected <- track$timeLOCAL + 10
 
 
 #PLOT the track in map
@@ -115,16 +115,24 @@ video <- as.data.frame(unique(PARALENZ$video_name))
 library(dplyr)
 video.annotations.Paralenz <- left_join(video.annotations,PARALENZ , by=c("frame.secs","video_name"))
 
-video.annotations.Paralenz$video_name
 
 #Merge GPS position with video annotations using time------
 #MERGE gpx Track and annotations
-for (i in 1:length(track$timecorrected)){
-  isbewteen<-between(video.annotations.Paralenz$timeLOCAL, track$timecorrected[i], track$timecorrected[i]+5)
+for (i in 1:length(track$timeLOCAL_corrected)){
+  isbewteen<-between(video.annotations.Paralenz$timeLOCAL, track$timeLOCAL_corrected[i], track$timeLOCAL_corrected[i]+5)
   video.annotations.Paralenz$GPSLongitude[isbewteen ]<-track$lon[i]
   video.annotations.Paralenz$GPSLatitude[isbewteen ]<-track$lat[i]
   video.annotations.Paralenz$timegpsUTC[isbewteen ]<-track$f.time[i]
 }
+
+
+library(dplyr)
+# Create a new dataframe with the count of each category per second and keep the other columns
+video.annotations.Paralenz_count <- video.annotations.Paralenz %>%
+  mutate(truncated_time = trunc(timeLOCAL, "secs")) %>%
+  group_by(truncated_time, label_name) %>%
+  mutate(count = n()) %>%
+  distinct(truncated_time, label_name, .keep_all = TRUE)
 
 
 
@@ -135,7 +143,6 @@ x1 <- -65.809794
 y1 <- -45.020866
 
 #Color for video Name 
-
 #set colors for videos names:
 pal <- colorFactor(
   palette = 'Dark2',
@@ -147,7 +154,6 @@ leaflet(video.annotations.Paralenz) %>% addTiles() %>%
   addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~video_name,color = ~pal(video),radius = 2)%>%
 addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
-
 
 #See Crabs in transect 
 leaflet(subset(video.annotations.Paralenz,label_name=="Leurocyclus tuberculosus")) %>% addTiles() %>%
@@ -161,16 +167,17 @@ leaflet(subset(video.annotations.Paralenz,label_name=="Rock")) %>% addTiles() %>
   addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
-#See Gracilaria in transect, in the case of gracilaria we have from 1 to 5 annotation per frame , indicantin density. 
 
-# Define a color palette
+#DENSITY MAPS-----
+#See Gracilaria in transect, in the case of gracilaria we have from 1 to 5 annotation per frame indicating density. 
+
+library(dplyr)
+library(leaflet)
+
+gracilaria_data <- subset(video.annotations.Paralenz_count,label_name=="Gracilaria")
+
+# Asignar colores más fuertes a los lugares con más anotaciones
 color_palette <- colorRampPalette(c("lightblue", "blue"))
-
-# Merge count data with original data
-merged_data <- merge(video.annotations.Paralenz, counts, by = "frame in secons", all.x = TRUE)
-
-# Filter to remove rows with NA in the 'count' column
-merged_data <- merged_data[complete.cases(merged_data$count), ]
 
 # Create the map
 map <- leaflet() %>%
@@ -181,7 +188,7 @@ map <- leaflet() %>%
 # Add circles with colors based on the number of annotations
 map <- addCircleMarkers(
   map,
-  data = merged_data,
+  data = gracilaria_data,
   lng = ~GPSLongitude,
   lat = ~GPSLatitude,
   radius = ~ifelse(count == 5, 6, count * 2),  # Adjust circle size
@@ -189,9 +196,18 @@ map <- addCircleMarkers(
   fillOpacity = 0.7
 )
 
+# Add a legend with title
+map <- addLegend(
+  map,
+  position = "bottomright",
+  colors = color_palette(5),
+  labels = c("1 Annotation", "2 Annotations", "3 Annotations", "4 Annotations", "5 Annotations"),
+  opacity = 0.7,
+  title = "Gracilaria Density"
+)
+
 # Show the map
 map
-
 
 
 #Save data in a csv file.

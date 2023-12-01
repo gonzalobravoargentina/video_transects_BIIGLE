@@ -39,6 +39,7 @@ video.annotations$video_name <- paste0("MOV_",str_sub(video.annotations$video_fi
 # GPS MODEL: GARMIN
 # recorded one point each 5 secs
 
+#Option 1------
 #get a list of all the CSV files in the "GPS" folder
 filesGPX <- list.files(path = "GPX files", pattern = "*.gpx", full.names = TRUE)
 
@@ -50,6 +51,18 @@ gpx <- lapply(setNames(filesGPX, make.names(gsub("*.gpx$", "",filesGPX))),
 
 #create a list with coordinates and time from all de gpx files
 gpxlist <- lapply(gpx,function(f) { data.frame(f@coords,f$time) })
+
+
+#Option 2------
+library(sp)
+# Get a list of all GPX files in the "GPX files" folder
+filesGPX <- list.files(path = "GPX files", pattern = "*.gpx", full.names = TRUE)
+
+# Read GPX files and store them in a list
+gpx <- lapply(filesGPX, function(f) { readOGR(dsn = f, layer = "track_points") })
+
+# Create a list with coordinates and time from all GPX files
+gpxlist <- lapply(gpx, function(f) { data.frame(coordinates(f), f$time) })
 
 #Create one DATAFRAME with the gps data 
 library(purrr)

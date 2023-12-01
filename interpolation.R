@@ -2,6 +2,8 @@
 library(sf)
 library(gstat)
 
+#https://nceas.github.io/oss-lessons/spatial-data-gis-law/4-tues-spatial-analysis-in-r.html
+
 # Assuming you have a grouped data frame called gracilaria_data
 # Make sure the columns GPSLongitude and GPSLatitude are of numeric type
 

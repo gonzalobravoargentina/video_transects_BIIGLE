@@ -35,6 +35,29 @@ library(stringr)
 video.annotations$video_name <- paste0("MOV_",str_sub(video.annotations$video_filename,-11,-5))
 
 
+#separeted labels 
+# Separate the values into different columns
+library(tidyr)
+video.annotations <- video.annotations %>%
+  separate(label_hierarchy, into = c("CATAMI_TYPE", "CATAMI_GROUP", "CATAMI_DISPLAY_NAME"), sep = " > ", extra = "merge")
+
+
+library(dplyr)
+# Add the Substrate_type column
+video.annotations <- video.annotations %>%
+  mutate(Substrate_type = case_when(
+    label_name == "Ripples (<10cm height)" ~ 8,
+    label_name == "Rock" ~ 7,
+    label_name == "Cobbles" ~ 6,
+    label_name == "Pebble (10-64mm)" ~ 5,
+    label_name == "Gravel (2-10mm)" ~ 4,
+    label_name == "Fine sand (no shell fragments)" ~ 3,
+    label_name == "Coarse sand (with shell fragments)" ~ 2,
+    label_name == "Bioturbated" ~ 1,
+    TRUE ~ NA_integer_
+  )) %>%
+  select(video_annotation_label_id, label_id,label_name,CATAMI_TYPE, CATAMI_GROUP, CATAMI_DISPLAY_NAME, Substrate_type, everything())  # Move Substrate_type after CATAMI_DISPLAY_NAME
+
 # READ .GPX -------------------
 # GPS MODEL: GARMIN
 # recorded one point each 5 secs
@@ -143,10 +166,8 @@ library(dplyr)
 # Create a new dataframe with the count of each category per second and keep the other columns
 video.annotations.Paralenz_count <- video.annotations.Paralenz %>%
   mutate(truncated_time = trunc(timeLOCAL, "secs")) %>%
-  group_by(truncated_time, label_name) %>%
-  mutate(count = n()) %>%
+  add_count(truncated_time, label_name, name = "count") %>%
   distinct(truncated_time, label_name, .keep_all = TRUE)
-
 
 
 #MAPS-----
@@ -224,4 +245,5 @@ map
 
 
 #Save data in a csv file.
-write.csv(video.annotations.Paralenz, file = "Data.csv")
+write.csv(video.annotations.Paralenz_count, file = "Data.csv")
+

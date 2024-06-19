@@ -1,14 +1,16 @@
 
-#Scrip:
-# Read video annotations from Biigle Software 
-# Read GPX track from GARMIN GPS used for video transects
-# Merge GPS position with video annotations using time 
+#This script is designed to process data collected during video transects by integrating video annotations from the BIIGLE software with GPS tracking data from a GARMIN GPS device. The primary goal is to merge the GPS coordinates with the corresponding video annotations based on their timestamps, providing a georeferenced record of the observed events.
+
+#Key Steps:
+# 1- Read Video Annotations from BIIGLE Software: The script begins by importing video annotation data exported from BIIGLE. BIIGLE is an online platform used for annotating video footage, where specific events such as fish sightings, bottom types, invertebrates, and algae are labeled with precise timestamps. This step ensures that all annotations made during the video survey are available for further processing.
+# 2- Read GPX Track from GARMIN GPS:Next, the script reads the GPX track data recorded by the GARMIN GPS device used during the video transects. The GPX (GPS Exchange Format) file contains a series of geographic coordinates (latitude and longitude) along with timestamps. This data represents the path followed by the tow boat and the diver during the survey.
+# 3- Merge GPS Position with Video Annotations Using Time: The final step involves synchronizing the video annotations with the GPS data based on their timestamps. By matching the times in both datasets, the script can accurately assign geographic coordinates to each annotated event in the video. This merging process is crucial for creating a georeferenced dataset that maps observed events to specific locations on the seafloor.
 
 
 #READ VIDEO ANNOTATIONS-------
 # Source https://biigle.de/projects/477
 
-#Set forlders with data
+#Set folder with data
 Annotations <- "Biigle annotations"
 
 #Read file in Biigle annotations folder 
@@ -153,12 +155,26 @@ video.annotations.Paralenz <- left_join(video.annotations,PARALENZ , by=c("frame
 
 
 #Merge GPS position with video annotations using time------
-#MERGE gpx Track and annotations
-for (i in 1:length(track$timeLOCAL_corrected)){
-  isbewteen<-between(video.annotations.Paralenz$timeLOCAL, track$timeLOCAL_corrected[i], track$timeLOCAL_corrected[i]+5)
-  video.annotations.Paralenz$GPSLongitude[isbewteen ]<-track$lon[i]
-  video.annotations.Paralenz$GPSLatitude[isbewteen ]<-track$lat[i]
-  video.annotations.Paralenz$timegpsUTC[isbewteen ]<-track$f.time[i]
+#MERGE gpx Track and annotations (without layback)
+#for (i in 1:length(track$timeLOCAL_corrected)){
+#  isbewteen<-between(video.annotations.Paralenz$timeLOCAL, track$timeLOCAL_corrected[i], track$timeLOCAL_corrected[i]+5)
+#  video.annotations.Paralenz$GPSLongitude[isbewteen ]<-track$lon[i]
+#  video.annotations.Paralenz$GPSLatitude[isbewteen ]<-track$lat[i]
+#  video.annotations.Paralenz$timegpsUTC[isbewteen ]<-track$f.time[i]
+#}
+
+# Merge GPS position with video annotations using time
+# MERGE gpx Track and annotations with a layback 
+layback_seconds <- 30  # Layback in secs
+
+for (i in 1:length(track$timeLOCAL_corrected)) {
+  is_between <- between(video.annotations.Paralenz$timeLOCAL, 
+                        track$timeLOCAL_corrected[i] - layback_seconds, 
+                        track$timeLOCAL_corrected[i] + 5)
+  
+  video.annotations.Paralenz$GPSLongitude[is_between] <- track$lon[i]
+  video.annotations.Paralenz$GPSLatitude[is_between] <- track$lat[i]
+  video.annotations.Paralenz$timegpsUTC[is_between] <- track$f.time[i]
 }
 
 
@@ -170,7 +186,47 @@ video.annotations.Paralenz_count <- video.annotations.Paralenz %>%
   distinct(truncated_time, label_name, .keep_all = TRUE)
 
 
+library(dplyr)
+video.annotations.Paralenz_count <- video.annotations.Paralenz_count %>%
+  mutate(label_name = case_when(
+    label_name == "Green" ~ "Macroalgae:Filamentous/filiform:Green",
+    label_name == "Filamentous / filiform" ~ "Macroalgae:Filamentous/filiform",
+    label_name == "Benthic" ~ "Echinoderms:Sea cucumbers",
+    label_name == "Simple" ~ "Sponges:Massiveforms:Simple",
+    label_name == "Solitary" ~ "Ascidians:Unstalked:Solitary",
+    label_name == "Encrusting" ~ "Sponges:Crusts:Encrusting",
+    TRUE ~ as.character(label_name)  # Mantener cualquier otro valor como está
+  ))
+#write.csv(video.annotations.Paralenz_count,"Counts.csv")
+
+
+Check_list <- video.annotations.Paralenz_count %>%
+  distinct(label_name, CATAMI_TYPE) %>%
+  arrange(CATAMI_TYPE, label_name)
+
+
 #MAPS-----
+#MAP with the track of towboat
+library(leaflet)
+library(leaflet.extras)
+library(webshot)
+library(htmlwidgets)
+
+# Crear el mapa en leaflet
+map <- leaflet() %>%
+  addTiles() %>%
+  addCircles(data = track, ~lon, ~lat, radius = 1, color = "orange", stroke = FALSE) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addScaleBar() %>%
+  setView(lng = mean(track$lon), lat = mean(track$lat), zoom = 13.5)
+
+# Guardar el mapa como archivo HTML
+#saveWidget(map, "map.html", selfcontained = TRUE)
+
+# Convertir el archivo HTML a PDF
+#webshot("map.html", file = "map.pdf")
+
+
 #view photos in a map
 #Point of map center
 x1 <- -65.809794
@@ -190,16 +246,38 @@ addProviderTiles("Esri.WorldImagery") %>%
   setView(lng = x1, lat = y1, zoom = 15)
 
 #See Crabs in transect 
-leaflet(subset(video.annotations.Paralenz,label_name=="Leurocyclus tuberculosus")) %>% addTiles() %>%
+leaflet(subset(video.annotations.Paralenz,label_name=="Rock")) %>% addTiles() %>%
   addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
 #See rock in transect 
-leaflet(subset(video.annotations.Paralenz,label_name=="Rock")) %>% addTiles() %>%
+leaflet(subset(video.annotations.Paralenz,label_name=="Ripples (<10cm height)")) %>% addTiles() %>%
   addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
+
+
+
+#BOTTOM TYPE MAPS------
+
+x1 <- -65.809794
+y1 <- -45.020866
+
+#Color for video Name 
+#set colors for videos names:
+video.annotations.Paralenz_bottomtype <- subset(video.annotations.Paralenz, CATAMI_GROUP=="Substrate")
+pal <- colorFactor(
+  palette = 'Set3',
+  domain = video.annotations.Paralenz_bottomtype$label_name
+)
+
+library(leaflet)
+leaflet(video.annotations.Paralenz_bottomtype) %>% addTiles() %>%
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,color = ~pal(label_name),radius = 8, fillOpacity = 1)%>%
+  addProviderTiles("Esri.WorldImagery") %>%  
+  setView(lng = x1, lat = y1, zoom = 15)
+
 
 
 #DENSITY MAPS-----
@@ -209,6 +287,8 @@ library(dplyr)
 library(leaflet)
 
 gracilaria_data <- subset(video.annotations.Paralenz_count,label_name=="Gracilaria")
+
+#write.csv(gracilaria_data,"gracilaria_data.csv")
 
 # Asignar colores más fuertes a los lugares con más anotaciones
 color_palette <- colorRampPalette(c("lightblue", "blue"))
@@ -245,5 +325,5 @@ map
 
 
 #Save data in a csv file.
-write.csv(video.annotations.Paralenz_count, file = "Data.csv")
+#write.csv(video.annotations.Paralenz_count, file = "Data.csv")
 

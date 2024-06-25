@@ -1,0 +1,43 @@
+"","label_1","label_2","label_3","label_name","count"
+"1","Physical","Substrate","Consolidated (hard)","Rock",176
+"2","Biota","Cnidaria","True anemones","Metridium",24
+"3","Biota","Fishes","Bony fishes","Bony fishes",9
+"4","Biota","Ascidians","Unstalked","Polyzoa opuntia",117
+"5","Biota","Worms","Polychaetes","Aphrodita sp.",2
+"6","Biota","Crustacea","Crabs","Leucippa pentagona",37
+"7","Biota","Echinoderms","Sea stars","Anasterias antarctica",24
+"8","Physical","Substrate","Unconsolidated (soft)","Coarse sand (with shell fragments)",303
+"9","Biota","Macroalgae","Large canopy-forming","Undaria pinnatifida",120
+"10","Physical","Bedforms","2D","Ripples (<10cm height)",60
+"11","Biota","Macroalgae","Erect fine branching","Gracilaria",1705
+"12","Biota","Ascidians","Unstalked","Ascidians:Unstalked:Solitary",2
+"13","Biota","Echinoderms","Sea stars","Sea stars",7
+"14","Physical","Substrate","Unconsolidated (soft)","Gravel (2-10mm)",70
+"15","Biota","Crustacea","Crabs","Carcinus maenas",31
+"16","Physical","Substrate","Unconsolidated (soft)","Fine sand (no shell fragments)",74
+"17","Biota","Macroalgae","Large canopy-forming","Macrocystis pyrifera",71
+"18","Biota","Sponges","Crusts","Sponges:Crusts:Encrusting",7
+"19","Biota","Fishes","Bony fishes","Sebastes oculatus",3
+"20","Biota","Macroalgae","Community Gracilaria and Filamentous","Community Gracilaria and Filamentous",44
+"21","Biota","Echinoderms","Sea stars","Allostichaster capensis",8
+"22","Biota","Crustacea","Crabs","Leurocyclus tuberculosus",115
+"23","Biota","Cnidaria","True anemones","Antholoba achates",11
+"24","Biota","Macroalgae","Community Dictyota","Community Dictyota",6
+"25","Biota","Macroalgae","Community Filamentous","Community Filamentous",10
+"26","Biota","Macroalgae","Community Codium","Community Codium",15
+"27","Biota","Macroalgae","Filamentous / filiform","Macroalgae:Filamentous/filiform:Green",15
+"28","Biota","Crustacea","Crabs","Peltarion spinulosum",5
+"29","Physical","Substrate","Consolidated (hard)","Cobbles",8
+"30","Biota","Echinoderms","Sea stars","Cosmasterias lurida",2
+"31","Biota","Macroalgae","Community Ulva","Community Ulva",2
+"32","Biota","Macroalgae","Community Macrocystis","Community Macrocystis",5
+"33","Biota","Sponges","Massive forms","Sponges:Massiveforms:Simple",1
+"34","Biota","Crustacea","Crabs","True crabs",2
+"35","Biota","Molluscs","Bivalves","Bivalves",1
+"36","Biota","Molluscs","Gastropods","Odontocymbiola magellanica",5
+"37","Biota","Echinoderms","Sea cucumbers","Echinoderms:Sea cucumbers",1
+"38","Biota","Crustacea","Crabs","Ovalipes trimaculatus",1
+"39","Physical","Anthropogenic object",NA,"Anthropogenic object",3
+"40","Physical","Substrate","Unconsolidated (soft)","Coquina / shellhash",3
+"41","Biota","Macroalgae","Filamentous / filiform","Macroalgae:Filamentous/filiform",107
+"42","Physical","Bedforms","2D","Waves (>10cm height)",3

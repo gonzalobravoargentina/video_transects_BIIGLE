@@ -61,12 +61,10 @@ library(dplyr)
 # Add the Substrate_type column
 video.annotations <- video.annotations %>%
   mutate(Substrate_type = case_when(
-    label_name == "Coquina / shellhash" ~ 6,
-    label_name == "Rock" ~ 5,
-    label_name == "Cobbles" ~ 4,
+    label_name == "Rock" ~ 4,
     label_name == "Gravel (2-10mm)" ~ 3,
-    label_name == "Fine sand (no shell fragments)" ~ 2,
-    label_name == "Coarse sand (with shell fragments)" ~ 1,
+    label_name == "Fine sand (no shell fragments)" ~ 1,
+    label_name == "Coarse sand (with shell fragments)" ~ 2,
     TRUE ~ NA_integer_
   )) %>%
   select(video_annotation_label_id, label_id,label_name, Substrate_type, everything())  # Move Substrate_type after CATAMI_DISPLAY_NAME
@@ -297,7 +295,6 @@ video.annotations.Paralenz_count <- video.annotations.Paralenz_count %>%
   mutate(count = as.numeric(count))
 
 
-
 #Export FULL DATA 
 #set working directoty in Data folder
 #write.csv(video.annotations.Paralenz_count,"Full_DATA.csv")
@@ -354,7 +351,7 @@ leaflet(video.annotations.Paralenz) %>% addTiles() %>%
 addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
-#See Crabs in transect 
+#See rocks in transect 
 leaflet(subset(video.annotations.Paralenz,label_name=="Rock")) %>% addTiles() %>%
   addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") %>%  
@@ -378,44 +375,51 @@ leaflet(subset(video.annotations.Paralenz,label_name=="Polyzoa opuntia")) %>% ad
   setView(lng = x1, lat = y1, zoom = 15)
 
 leaflet(subset(video.annotations.Paralenz,label_name=="Metridium")) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
-  addProviderTiles("Esri.WorldImagery") %>%  
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1,color="red")%>%addProviderTiles("Stadia.AlidadeSmooth") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
 
 #Crabs
-leaflet(subset(video.annotations.Paralenz,label_name=="Leurocyclus tuberculosus")) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
-  addProviderTiles("Esri.WorldImagery") %>%  
+library(dplyr)
+library(leaflet)
+
+# Filtrar los datos para obtener solo los registros con "True crabs" en label_3
+filtered_annotations <- video.annotations.Paralenz %>%
+  filter(grepl("True crabs", label_4))
+
+# Definir una paleta de colores para cada categoría en label_name
+unique_labels <- unique(filtered_annotations$label_name)
+color_palette <- colorFactor(palette = rainbow(length(unique_labels)), 
+                             levels = unique_labels)
+
+# Coordenadas centrales para el setView
+x1 <- mean(filtered_annotations$GPSLongitude)
+y1 <- mean(filtered_annotations$GPSLatitude)
+
+# Crear el mapa
+leaflet(filtered_annotations) %>%
+  addTiles() %>%
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, 
+                   color = ~color_palette(label_name), 
+                   popup = ~label_name, 
+                   radius = 1) %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addLegend("bottomright", 
+            pal = color_palette, 
+            values = ~label_name, 
+            title = "True Crab Communities",
+            opacity = 1) %>%
   setView(lng = x1, lat = y1, zoom = 15)
 
-leaflet(subset(video.annotations.Paralenz,label_name=="Leucippa pentagona")) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
-  addProviderTiles("Esri.WorldImagery") %>%  
-  setView(lng = x1, lat = y1, zoom = 15)
 
-leaflet(subset(video.annotations.Paralenz,label_name=="Carcinus maenas")) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
-  addProviderTiles("Esri.WorldImagery") %>%  
-  setView(lng = x1, lat = y1, zoom = 15)
 
-leaflet(subset(video.annotations.Paralenz,label_name=="Peltarion spinulosum")) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
-  addProviderTiles("Esri.WorldImagery") %>%  
-  setView(lng = x1, lat = y1, zoom = 15)
 
-leaflet(subset(video.annotations.Paralenz,label_name=="Ovalipes trimaculatus")) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
-  addProviderTiles("Esri.WorldImagery") %>%  
-  setView(lng = x1, lat = y1, zoom = 15)
 
 
 # Community Maps-----
 library(ggplot2)
 library(dplyr)
 library(sf)
-
-
 library(dplyr)
 library(leaflet)
 
@@ -448,36 +452,148 @@ leaflet(filtered_annotations) %>%
 
 
 #BOTTOM TYPE MAPS------
+#inverse distance weighted interpolation
+#https://pages.cms.hu-berlin.de/EOL/gcg_quantitative-methods/Lab14_Kriging.html
+library(rgdal)
+library(gstat)
+library(raster)
+library(sp)
+library(leaflet)
+library(here)
+library(dplyr)
 
-x1 <- -65.809794
-y1 <- -45.020866
-
-#Color for video Name 
-#set colors for videos names:
-video.annotations.Paralenz_bottomtype <- subset(video.annotations.Paralenz, label_2=="Substrate")
 
 
-pal <- colorFactor(
-  palette = 'Set3',
-  domain = video.annotations.Paralenz_bottomtype$label_3
+# Filtrar las anotaciones para el tipo de fondo
+video.annotations.Paralenz_bottomtype <- subset(video.annotations.Paralenz, label_2 == "Substrate")
+
+# Definir una paleta de colores para cada categoría de label_name
+color_palette <- colorFactor(
+  palette = c("blue", "green", "red", "yellow"),
+  domain = video.annotations.Paralenz_bottomtype$label_name
 )
 
-library(leaflet)
-leaflet(video.annotations.Paralenz_bottomtype) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,color = ~pal(label_3),radius = 5, fillOpacity = 1)%>%
+# Crear el mapa Leaflet con los puntos coloreados por label_name
+leaflet(video.annotations.Paralenz_bottomtype) %>% 
+  addTiles() %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addCircleMarkers(
+    ~ GPSLongitude, ~ GPSLatitude, 
+    popup = ~ label_name,
+    radius = 1,
+    color = ~ color_palette(label_name)
+  ) %>%
+  setView(
+    lng = mean(video.annotations.Paralenz_bottomtype$GPSLongitude),
+    lat = mean(video.annotations.Paralenz_bottomtype$GPSLatitude),
+    zoom = 15
+  )
+
+# Ruta al archivo KML
+bahia_arredondo <- readOGR(dsn = "Arredondo.kml")
+
+# Seleccionar las columnas necesarias de tu dataset
+data <- video.annotations.Paralenz_bottomtype %>%
+  dplyr::select(GPSLongitude, GPSLatitude, Substrate_type)
+
+# Crear un objeto SpatialPointsDataFrame
+coordinates(data) <- ~ GPSLongitude + GPSLatitude
+
+# Definir la resolución de la grilla (ajustar según sea necesario)
+resolution <- 0.000008  # Ajuste de tamaño del píxel
+
+# Crear una grilla dentro del polígono del KML
+grid <- spsample(bahia_arredondo, type = "regular", cellsize = resolution)
+
+# Crear un data frame con las coordenadas de la grilla
+grid_df <- data.frame(coordinates(grid))
+coordinates(grid_df) <- ~ x1 + x2
+gridded(grid_df) <- TRUE
+
+# Realizar la interpolación usando IDW
+idw_interpolation <- idw(formula = Substrate_type ~ 1, locations = data, newdata = grid_df)
+
+# Convertir la interpolación a un raster
+raster_interpolation <- rasterFromXYZ(as.data.frame(idw_interpolation)[, c("x1", "x2", "var1.pred")])
+
+# Asignar una proyección al raster
+projection(raster_interpolation) <- CRS("+proj=longlat +datum=WGS84")
+plot(raster_interpolation)
+# Redondear los valores para que sean discretos (1 a 4)
+raster_interpolation[] <- round(raster_interpolation[])
+raster_interpolation[raster_interpolation[] < 1] <- 1
+raster_interpolation[raster_interpolation[] > 4] <- 4
+
+# Recortar el raster interpolado usando los límites de la Bahía Arredondo
+raster_clipped <- mask(raster_interpolation, bahia_arredondo)
+
+# Definir los valores fuera de la bahía como NA
+raster_clipped[is.na(raster_clipped[])] <- NA
+
+# Definir la paleta de colores discreta para el raster
+color_palette <- colorFactor(
+  palette = c("#D2B48C", "#CD853F", "#A52A2A", "#FF0000"),
+  domain = 1:4,
+  na.color = "transparent"  # Asegurarse de que NA sea transparente
+)
+
+# Crear el mapa Leaflet
+leaflet() %>%
+  addTiles() %>%
+  addProviderTiles("Stadia.AlidadeSmooth") %>%
+  setView(lng = mean(bbox(bahia_arredondo)[1, ]), lat = mean(bbox(bahia_arredondo)[2, ]), zoom = 15) %>%
+  addRasterImage(raster_clipped, colors = color_palette, opacity = 0.8) %>%
+  addLegend(pal = color_palette, values = 1:4, title = "Substrate Type") %>%
+  setView(lng = mean(bbox(bahia_arredondo)[1, ]), lat = mean(bbox(bahia_arredondo)[2, ]), zoom = 15)
+
+
+
+#Crabs maps------
+leaflet() %>%
+  addTiles() %>%
+  addProviderTiles("Stadia.AlidadeSmooth") %>%
+  setView(lng = mean(bbox(bahia_arredondo)[1, ]), lat = mean(bbox(bahia_arredondo)[2, ]), zoom = 15) %>%
+  addRasterImage(raster_clipped, colors = color_palette, opacity = 0.8) %>%
+  addLegend(
+    pal = color_palette,
+    values = 1:6,
+    title = "Substrate Type",
+    labels = substrate_labels
+  ) %>%
+  # Añadir los puntos adicionales
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude,
+    data = subset(video.annotations.Paralenz, label_name == "Leurocyclus tuberculosus"),
+    radius = 1,
+    color = "Black",
+  ) %>%
+  setView(lng = mean(bbox(bahia_arredondo)[1, ]), lat = mean(bbox(bahia_arredondo)[2, ]), zoom = 15)
+
+
+leaflet(subset(video.annotations.Paralenz,label_name=="Leurocyclus tuberculosus")) %>% addTiles() %>%addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1,color="Blue")%>%addProviderTiles("Stadia.AlidadeSmooth") %>%  
+  setView(lng = x1, lat = y1, zoom = 15)
+
+leaflet(subset(video.annotations.Paralenz,label_name=="Leucippa pentagona")) %>% addTiles() %>%addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1,color="White")%>%addProviderTiles("Stadia.AlidadeSmooth") %>%  
+  setView(lng = x1, lat = y1, zoom = 15)
+
+leaflet(subset(video.annotations.Paralenz,label_name=="Carcinus maenas")) %>% addTiles() %>%addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1,color="Black")%>%addProviderTiles("Stadia.AlidadeSmooth") %>%  
+  setView(lng = x1, lat = y1, zoom = 15)
+
+leaflet(subset(video.annotations.Paralenz,label_name=="Peltarion spinulosum")) %>% addTiles() %>%
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
   addProviderTiles("Esri.WorldImagery") %>%  
   setView(lng = x1, lat = y1, zoom = 15)
 
-
-
-
+leaflet(subset(video.annotations.Paralenz,label_name=="Ovalipes trimaculatus")) %>% addTiles() %>%
+  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~label_name,radius = 1)%>%
+  addProviderTiles("Esri.WorldImagery") %>%  
+  setView(lng = x1, lat = y1, zoom = 15)
 
 
 #DENSITY MAPS-----
 # As each transect was of 2 m width we can calculate de abundance /m2 of mobile invertebrates
 # 
-
-invertebrates <- subset(video.annotations.Paralenz_count, CATAMI_TYPE=="Biota" & CATAMI_GROUP!="Macroalgae")
+names(video.annotations.Paralenz_count)
+invertebrates <- subset(video.annotations.Paralenz_count, label_1=="Biota" & label_2!="Macroalgae")
 # Ensure the Transect column is a factor
 invertebrates$Transect <- as.factor(invertebrates$Transect)
 

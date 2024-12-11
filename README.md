@@ -18,9 +18,6 @@ This script performs the following tasks:
 ![](https://github.com/gonzalobravoargentina/video_transects_BIIGLE/blob/master/Map_example.png)
 
 
-### Usage
-1. Run the script to load and process the data.
-2. Explore the generated maps for video and annotation visualization.
 
 ### Dependencies
 - R packages: readr, jsonlite, rgdal, purrr, lubridate, leaflet, plyr, dplyr.

@@ -9,7 +9,7 @@ Annotations <- "Biigle annotations"
 
 #Read file in Biigle annotations folder 
 library(readr)
-video.annotations <- read.csv(file.path(Annotations,"2736-google-cloud.csv"))
+video.annotations <- read.csv(file.path(Annotations,"video_annotations_Biigle.csv"))
 
 #time is in json array []
 #we use jsonlite to transform into r column 

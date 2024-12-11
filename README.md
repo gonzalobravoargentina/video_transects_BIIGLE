@@ -1,6 +1,6 @@
 # Video Transects Data Processing
 
-This script is designed to process data collected during video transects by integrating video annotations from the BIIGLE software with GPS tracking data from a GARMIN GPS device. The primary goal is to merge the GPS coordinates with the corresponding video annotations based on their timestamps, providing a georeferenced record of the observed events and calculating species densities based on substrate types.
+This script ![Full_code.R](https://github.com/gonzalobravoargentina/video_transects_BIIGLE/blob/master/Full_code.R) is designed to process data collected during video transects by integrating video annotations from the BIIGLE software with GPS tracking data from a GARMIN GPS device. The primary goal is to merge the GPS coordinates with the corresponding video annotations based on their timestamps, providing a georeferenced record of the observed events and calculating species densities based on substrate types.
 
 ## Key Steps:
 

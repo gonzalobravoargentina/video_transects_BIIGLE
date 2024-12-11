@@ -1,11 +1,4 @@
 
-#This script is designed to process data collected during video transects by integrating video annotations from the BIIGLE software with GPS tracking data from a GARMIN GPS device. The primary goal is to merge the GPS coordinates with the corresponding video annotations based on their timestamps, providing a georeferenced record of the observed events.
-
-#Key Steps:
-# 1- Read Video Annotations from BIIGLE Software: The script begins by importing video annotation data exported from BIIGLE. BIIGLE is an online platform used for annotating video footage, where specific events such as fish sightings, bottom types, invertebrates, and algae are labeled with precise timestamps. This step ensures that all annotations made during the video survey are available for further processing.
-# 2- Read GPX Track from GARMIN GPS:Next, the script reads the GPX track data recorded by the GARMIN GPS device used during the video transects. The GPX (GPS Exchange Format) file contains a series of geographic coordinates (latitude and longitude) along with timestamps. This data represents the path followed by the tow boat and the diver during the survey.
-# 3- Merge GPS Position with Video Annotations Using Time: The final step involves synchronizing the video annotations with the GPS data based on their timestamps. By matching the times in both datasets, the script can accurately assign geographic coordinates to each annotated event in the video. This merging process is crucial for creating a georeferenced dataset that maps observed events to specific locations on the seafloor.
-
 
 #READ VIDEO ANNOTATIONS-------
 # Source https://biigle.de/projects/477
@@ -50,7 +43,6 @@ video.annotations <- separate(video.annotations, label_hierarchy,
                               fill = "right", 
                               remove = FALSE)
 
-
 # Remove spaces in the new columns
 # Apply gsub function to each column to remove leading and trailing spaces
 for (i in 1:max_splits) {
@@ -69,12 +61,9 @@ video.annotations <- video.annotations %>%
   )) %>%
   select(video_annotation_label_id, label_id,label_name, Substrate_type, everything())  # Move Substrate_type after CATAMI_DISPLAY_NAME
 
-
-
-# READ .GPX -------------------
+# READ GPS FILES (.GPX) -------------------
 # GPS MODEL: GARMIN
 # recorded one point each 5 secs
-
 
 library(sp) 
 # Get a list of all GPX files in the "GPX files" folder
@@ -90,7 +79,6 @@ gpxlist <- lapply(gpx, function(f) { data.frame(coordinates(f), f$time) })
 #Create one DATAFRAME with the gps data 
 library(purrr)
 track <- dplyr::bind_rows(gpxlist)
-
 
 #As the GPX files are in UTC time, we must covert to the local time as the photos
 library(lubridate)
@@ -168,7 +156,6 @@ for (i in 1:length(track$timeLOCAL_corrected)){
   video.annotations.Paralenz$GPSLatitude[isbewteen ]<-track$lat[i]
   video.annotations.Paralenz$timegpsUTC[isbewteen ]<-track$f.time[i]
 }
-
 
 #TRANSECTS DATA---------
 # Add transect name (T1 (North) to T8 (South)) , this name order does not correspond with time order
@@ -270,11 +257,10 @@ Transect_stats <- data.frame(
 )
 
 
-
 #merge transect distance and time info into large dataframe
 video.annotations.Paralenz <- merge(video.annotations.Paralenz, transect_data, by = "Transect", all.x = FALSE)
 
-rm(transect_data,transect_distances,transect_times, end_coord,end_time,start_coord,start_time,stats_df)
+rm(transect_data,transect_distances,transect_times, end_coord,end_time,start_coord,start_time)
 
 #Create DATA files with count of each category-------
 library(dplyr)
@@ -301,83 +287,8 @@ Check_list <- video.annotations.Paralenz %>%
   add_count(label_name, name = "count") %>%
   distinct(label_name, .keep_all = TRUE) %>%
   select(label_1,label_2,label_3,label_name,  count)
-
 #write.csv(Check_list, "Check_list.csv")
 
-
-#TRACK MAPS-----
-#MAP with the track of towboat
-library(leaflet)
-library(leaflet.extras)
-library(webshot)
-library(htmlwidgets)
-
-
-map_track <- leaflet() %>%
-  addTiles() %>%
-  addCircles(data = track, ~lon, ~lat, radius = 1, color = "orange", stroke = FALSE) %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addScaleBar() %>%
-  setView(lng = mean(track$lon), lat = mean(track$lat), zoom = 13.5)
-
-# Guardar el mapa como archivo HTML
-#saveWidget(map, "map.html", selfcontained = TRUE)
-
-# Convertir el archivo HTML a PDF
-#webshot("map.html", file = "map.pdf")
-
-
-#view photos in a map
-#Point of map center
-x1 <- -65.809794
-y1 <- -45.020866
-
-#Color for video Name 
-#set colors for videos names:
-pal <- colorFactor(
-  palette = 'Dark2',
-  domain = video.annotations.Paralenz$video
-)
-
-library(leaflet)
-map_transects <- leaflet(video.annotations.Paralenz) %>% addTiles() %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, popup = ~video_name,color = ~pal(video),radius = 2)%>%
-addProviderTiles("Esri.WorldImagery") %>%  
-  setView(lng = x1, lat = y1, zoom = 15)
-
-# ALGAE Community Maps-----
-library(ggplot2)
-library(dplyr)
-library(sf)
-library(dplyr)
-library(leaflet)
-
-# Filtrar las comunidades específicas
-communities <- c("Community Ulva", "Community Macrocystis", 
-                 "Community Filamentous", "Community Dictyota", "Community Codium")
-
-filtered_annotations <- video.annotations.Paralenz %>%
-  filter(label_name %in% communities)
-
-# Definir una paleta de colores para cada comunidad
-color_palette <- colorFactor(palette = c("red", "blue", "green", "purple", "orange"), 
-                             levels = communities)
-
-# Crear el mapa
-leaflet(filtered_annotations) %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addCircleMarkers(~ GPSLongitude, ~ GPSLatitude, 
-                   color = ~color_palette(label_name), 
-                   popup = ~label_name, 
-                   radius = 5) %>%
-  addLegend("bottomright", 
-            pal = color_palette, 
-            values = ~label_name, 
-            title = "Communities",
-            opacity = 1) %>%
-  setView(lng = mean(filtered_annotations$GPSLongitude), 
-          lat = mean(filtered_annotations$GPSLatitude), 
-          zoom = 15)
 
 # SUBSTRATES MAPS----
 # Load required libraries
@@ -399,10 +310,87 @@ video.annotations.Paralenz_bottomtype <- subset(video.annotations.Paralenz, labe
 data_substrate <- video.annotations.Paralenz_bottomtype %>%
   dplyr::select(GPSLongitude, GPSLatitude, Substrate_type)
 
-# -------- Interpolation without Rock (Substrate Type 4)
+# Define grid resolution (adjust as needed)
+resolution <- 0.000008  # Grid cell size
+
+# -------- Interpolation with all substrate types ----
+
+# Create a SpatialPointsDataFrame using the original data
+coordinates(data_substrate) <- ~ GPSLongitude + GPSLatitude
+
+# Generate a regular grid within the KML polygon boundaries
+grid <- spsample(bahia_arredondo, type = "regular", cellsize = resolution)
+
+# Create a SpatialPixelsDataFrame for the grid
+grid_df <- data.frame(coordinates(grid))
+coordinates(grid_df) <- ~ x1 + x2
+gridded(grid_df) <- TRUE
+
+# Perform IDW interpolation with idp = 0.11
+idw_interpolation_all <- idw(formula = Substrate_type ~ 1,
+                             locations = data_substrate,
+                             newdata = grid_df,
+                             idp = 0.11)
+
+# Convert the interpolation result to a raster
+raster_all <- rasterFromXYZ(as.data.frame(idw_interpolation_all)[, c("x1", "x2", "var1.pred")])
+
+# Assign projection (WGS84) to the raster
+projection(raster_all) <- CRS("+proj=longlat +datum=WGS84")
+
+# Mask the raster to fit within the KML polygon
+raster_all <- mask(raster_all, bahia_arredondo)
+
+# Define color palette for all substrate types
+color_palette_all <- colorNumeric(
+  palette = c("#D2B48C", "#CD853F", "#A52A2A", "#FF0000"),
+  domain = values(raster_all),
+  na.color = "transparent"
+)
+
+# -------- Create the Leaflet Map
+
+leaflet() %>%
+  addTiles() %>%
+  addProviderTiles("Stadia.AlidadeSmooth") %>%
+  setView(lng = mean(bbox(bahia_arredondo)[1, ]),
+          lat = mean(bbox(bahia_arredondo)[2, ]),
+          zoom = 14.5) %>%
+  addRasterImage(raster_all, colors = color_palette_all, opacity = 0.8) %>%
+  addCircleMarkers(data = as.data.frame(data_substrate),
+                   lng = ~GPSLongitude,
+                   lat = ~GPSLatitude,
+                   color = ~color_palette_all(Substrate_type),
+                   radius = 5,
+                   fillOpacity = 1,
+                   stroke = FALSE,
+                   popup = ~paste("Substrate Type: ", Substrate_type)) %>%
+  addLegend(
+    position = "bottomright",
+    colors = c('#D2B48C', '#CD853F', '#A52A2A', '#FF0000'),
+    labels = c(
+      "1 = Unconsolidated (soft): Fine sand (no shell fragments)",
+      "2 = Unconsolidated (soft): Coarse sand (with shell fragments)",
+      "3 = Unconsolidated (soft): Gravel (2-10mm)",
+      "4 = Consolidated (hard): Rock"
+    ),
+    title = "Substrate Types",
+    opacity = 1
+  )
+
+
+
+# -------- Interpolation without Rock ----
+
+# Filter and clean the data, selecting relevant columns
+data_substrate <- video.annotations.Paralenz_bottomtype %>%
+  dplyr::select(GPSLongitude, GPSLatitude, Substrate_type)
 
 # Remove rock (Substrate Type 4) from the data
 data_sin_rock <- subset(data_substrate, Substrate_type != 4)
+
+# Ensure it's a plain data frame before setting coordinates
+data_sin_rock <- as.data.frame(data_sin_rock)
 
 # Create a SpatialPointsDataFrame from the filtered data
 coordinates(data_sin_rock) <- ~ GPSLongitude + GPSLatitude
@@ -445,14 +433,22 @@ color_palette_sinroca <- colorFactor(
   na.color = "transparent"
 )
 
-# -------- Interpolation for Rock Only 
+# -------- Interpolation for Rock Only ---- 
+
+# Filter and clean the data, selecting relevant columns
+data_substrate <- video.annotations.Paralenz_bottomtype %>%
+  dplyr::select(GPSLongitude, GPSLatitude, Substrate_type)
 
 # Reclassify data: rock (4) as 1, everything else as 0
 data_roca <- data_substrate %>%
   mutate(Substrate_type = ifelse(Substrate_type == 4, 1, 0))
 
-# Create a SpatialPointsDataFrame for the reclassified data
+# Ensure it's a plain data frame before setting coordinates
+data_roca <- as.data.frame(data_roca)
+
+# Create a SpatialPointsDataFrame from the filtered data
 coordinates(data_roca) <- ~ GPSLongitude + GPSLatitude
+
 
 # Interpolate using IDW for the rock data
 idw_interpolation_roca <- idw(formula = Substrate_type ~ 1,
@@ -501,7 +497,7 @@ leaflet() %>%
           zoom = 14.5) %>%
   addRasterImage(raster_roca, colors = color_palette_roca, opacity = 0.8)
 
-# Combined map with both rasters
+# Combined map with both rasters----
 leaflet() %>%
   addTiles() %>%
   addProviderTiles("Stadia.AlidadeSmooth") %>%
@@ -511,14 +507,16 @@ leaflet() %>%
   addRasterImage(raster_sinroca, colors = color_palette_sinroca, opacity = 0.8) %>%
   addRasterImage(raster_roca, colors = color_palette_roca, opacity = 0.8)
 
-# Map including original points (for validation)
+
+# Map including original points (for validation)----
 color_palette_completo <- colorFactor(
   palette = c("#D2B48C", "#CD853F", "#A52A2A", "#FF0000"),
   domain = 1:4,
   na.color = "transparent"
 )
 
-leaflet() %>%
+
+substrate_map <- leaflet() %>%
   addTiles() %>%
   addProviderTiles("Stadia.AlidadeSmooth") %>%
   setView(lng = mean(bbox(bahia_arredondo)[1, ]),
@@ -533,12 +531,22 @@ leaflet() %>%
                    radius = 5,
                    fillOpacity = 1,
                    stroke = FALSE,
-                   popup = ~paste("Substrate Type: ", Substrate_type))
-
+                   popup = ~paste("Substrate Type: ", Substrate_type)) %>%
+  addLegend(
+    position = "bottomright",
+    colors = c('#D2B48C', '#CD853F', '#A52A2A', '#FF0000'),  # Colores específicos
+    labels = c(
+      "1 = Unconsolidated (soft): Fine sand (no shell fragments)",
+      "2 = Unconsolidated (soft): Coarse sand (with shell fragments)",
+      "3 = Unconsolidated (soft): Gravel (2-10mm)",
+      "4 = Consolidated (hard): Rock"
+    ),
+    title = "Substrate Types",
+    opacity = 1
+  )
 
 
 # -------- SPECIES MAPS------
-
 
 # 1 Leurocyclus tuberculosus
 map_Leurocyclustuberculosus <- leaflet() %>%
@@ -693,6 +701,22 @@ map_Macrocystispyrifera <- leaflet() %>%
                    color = "Black",
                    radius = 1.5)
 
+#10_bis Undaria pinnatifida
+map_Undariapinnatifida <- leaflet() %>%
+  addTiles() %>%
+  addProviderTiles("Stadia.AlidadeSmooth") %>%
+  setView(lng = mean(bbox(bahia_arredondo)[1, ]),
+          lat = mean(bbox(bahia_arredondo)[2, ]),
+          zoom = 14.5) %>%
+  addRasterImage(raster_sinroca, colors = color_palette_sinroca, opacity = 1) %>%
+  addRasterImage(raster_roca, colors = color_palette_roca, opacity = 1) %>%
+  addCircleMarkers(data = subset(video.annotations.Paralenz, label_name == "Undaria pinnatifida"),
+                   lng = ~GPSLongitude,
+                   lat = ~GPSLatitude,
+                   color = "Black",
+                   radius = 1.5)
+
+
 # 11 Gracilaria
 gracilaria_data <- subset(video.annotations.Paralenz_count,label_name=="Gracilaria")
 
@@ -723,7 +747,6 @@ map_gracilaria <- addLegend(
   title = "<i>Gracilaria</i> <br> Cover"
 )
 
-map_gracilaria
 
 #11 Anasterias antarctica
 map_Anasteriasantarctica <- leaflet() %>%
@@ -741,181 +764,103 @@ map_Anasteriasantarctica <- leaflet() %>%
                    radius = 1.5)
 
 
-
-#DENSITY DATA----
+#DENSITY calculations-----
 # Load required libraries
 library(dplyr)
-library(sf)
-library(raster)
 library(geosphere)
 
-# **Step 1: Convert data points to a spatial object**
-# Convert GPS coordinates into an sf spatial object
-puntos_sf <- st_as_sf(video.annotations.Paralenz, 
-                      coords = c("GPSLongitude", "GPSLatitude"), 
-                      crs = 4326)
+# Assign substrate type to annotations based on raster values for "Rock" and "Unconsolidated (soft)"
+video.annotations.Paralenz$tipo_fondo <- NA
+video.annotations.Paralenz$tipo_fondo[
+  raster::extract(raster_sinroca, video.annotations.Paralenz[, c("GPSLongitude", "GPSLatitude")]) > 0
+] <- "Unconsolidated (soft)"
+video.annotations.Paralenz$tipo_fondo[
+  raster::extract(raster_roca, video.annotations.Paralenz[, c("GPSLongitude", "GPSLatitude")]) > 0
+] <- "Rock"
 
-# **Step 2: Filter relevant species data**
-# Keep only rows where the main label is "Biota"
-puntos_sf <- puntos_sf %>% filter(label_1 == "Biota")
+# Exclude rows where the primary label is "Physical" (non-biological annotations)
+video.annotations.Paralenz_filtered <- subset(video.annotations.Paralenz, label_1 != "Physical")
 
-# **Step 3: Extract substrate values**
-# Extract values from rasters for soft substrate and rock under each point
-valores_sinroca <- extract(raster_sinroca, puntos_sf)
-valores_roca <- extract(raster_roca, puntos_sf)
+# Group by substrate type (tipo_fondo) and label_name, and count the number of annotations
+annotation_counts <- video.annotations.Paralenz_filtered %>%
+  dplyr::group_by(tipo_fondo, label_name) %>%
+  dplyr::summarise(count = dplyr::n(), .groups = "drop")
 
-# **Step 4: Assign substrate type to points**
-# Create a column to classify substrate type based on extracted raster values
-puntos_sf$tipo_fondo <- NA
-puntos_sf$tipo_fondo[valores_sinroca > 0] <- "Unconsolidated (soft)"
-puntos_sf$tipo_fondo[valores_roca > 0] <- "Rock"
-
-# **Step 5: Assign transects to filtered points**
-# Filter the original annotations to include only "Biota"
-video_annotations_biota <- video.annotations.Paralenz %>%
-  filter(label_1 == "Biota")
-
-# Ensure rows match in order with puntos_sf and assign the Transect column
-puntos_sf$Transect <- video_annotations_biota$Transect
-
-# **Step 6: Filter valid points**
-# Retain only points with an assigned substrate type
-puntos_sf <- puntos_sf[!is.na(puntos_sf$tipo_fondo),]
-
-# **Step 7: Count points by species, substrate type, and transect**
-# Group data by species, substrate type, and transect, and count occurrences
-conteo_fondo_especie_transecta <- puntos_sf %>%
-  group_by(label_name, tipo_fondo, Transect) %>%
-  summarise(conteo = n(), .groups = "drop")
-
-# **Step 8: Create a complete grid**
-# Ensure all possible combinations of species, transects, and substrate types are present
+# Ensure all possible combinations of tipo_fondo and label_name are present
 complete_grid <- expand.grid(
-  label_name = unique(conteo_fondo_especie_transecta$label_name),
-  Transect = unique(conteo_fondo_especie_transecta$Transect),
-  tipo_fondo = unique(conteo_fondo_especie_transecta$tipo_fondo)
+  tipo_fondo = c("Rock", "Unconsolidated (soft)"),
+  label_name = unique(video.annotations.Paralenz_filtered$label_name)
 )
 
-# **Step 9: Fill missing data with zero counts**
-# Combine the complete grid with the existing counts and assign 0 to missing combinations
-conteo_fondo_especie_transecta_complete <- complete_grid %>%
-  left_join(conteo_fondo_especie_transecta, by = c("label_name", "Transect", "tipo_fondo")) %>%
-  mutate(conteo = ifelse(is.na(conteo), 0, conteo))  # Set count to 0 if missing
+# Merge the counts with the complete grid and fill missing combinations with 0
+annotation_counts <- complete_grid %>%
+  left_join(annotation_counts, by = c("tipo_fondo", "label_name")) %>%
+  mutate(count = ifelse(is.na(count), 0, count))
 
-# **Step 10: Calculate distance between consecutive points within each transect**
-# Filter data to include only relevant substrate categories
-data <- video.annotations.Paralenz %>%
-  arrange(Transect, Time) %>%
+# Filter only rows relevant for substrate distance calculation (ignore transects here)
+filtered_annotations <- video.annotations.Paralenz %>%
   filter(label_name %in% c("Coarse sand (with shell fragments)", 
                            "Fine sand (no shell fragments)", 
                            "Gravel (2-10mm)", 
-                           "Rock"))
+                           "Rock")) %>%
+  mutate(label_name = ifelse(label_name %in% c("Coarse sand (with shell fragments)", 
+                                               "Fine sand (no shell fragments)", 
+                                               "Gravel (2-10mm)"), 
+                             "Unconsolidated (soft)", "Rock"))
 
-# Add columns for latitude and longitude of the next point and calculate distances
-data <- data %>%
+# Calculate the distances between consecutive points
+filtered_annotations <- filtered_annotations %>%
+  arrange(Transect, Time) %>%
   group_by(Transect) %>%
   mutate(
-    lat_lag = lead(GPSLatitude),          # Latitude of the next point
-    long_lag = lead(GPSLongitude),        # Longitude of the next point
-    distance = ifelse(is.na(lat_lag), 0,  # Distance is 0 for the last point
+    lat_lag = lead(GPSLatitude),           # Latitude of the next point
+    long_lag = lead(GPSLongitude),         # Longitude of the next point
+    distance = ifelse(is.na(lat_lag), 0,   # Distance is 0 for the last point
                       distHaversine(cbind(GPSLongitude, GPSLatitude), cbind(long_lag, lat_lag)))
   ) %>%
   ungroup()
 
-# **Step 11: Reclassify certain substrate types and aggregate distances**
-# Group "Coarse sand", "Fine sand", and "Gravel" as "Unconsolidated (soft)"
-data <- data %>%
-  mutate(label_name = ifelse(label_name %in% c("Coarse sand (with shell fragments)", 
-                                               "Fine sand (no shell fragments)", 
-                                               "Gravel (2-10mm)"), 
-                             "Unconsolidated (soft)", label_name))
-
-# Summarize total distance for each substrate type within each transect
-substrate_distances <- data %>%
-  group_by(Transect, label_name) %>%
-  summarise(total_distance = sum(distance, na.rm = TRUE), .groups = "drop")
-
-# Rename columns for clarity
-names(substrate_distances) <- c("Transect", "substrate_type", "distance")
-
-# **Step 12: Add distance and calculate area**
-# Merge substrate distances with species counts and calculate the area (distance * width)
-conteo_fondo_especie_transecta_complete <- conteo_fondo_especie_transecta_complete %>%
-  left_join(substrate_distances, by = "Transect") %>%
-  mutate(area = distance * 2)  # Area = distance * 2m (transect width)
-
-# **Step 13: Filter matching rows between substrate type and fondo type**
-conteo_fondo_especie_transecta_complete <- conteo_fondo_especie_transecta_complete %>%
-  filter(tipo_fondo == substrate_type)
-
-# **Step 14: Sum species counts per transect, regardless of substrate type**
-conteo_total_por_transecta <- conteo_fondo_especie_transecta_complete %>%
-  group_by(label_name, Transect) %>%
-  summarise(
-    conteo = sum(conteo, na.rm = TRUE),
-    tipo_fondo = "ALL",              # Assign "ALL" to substrate type
-    substrate_type = "ALL",
-    distance = sum(distance, na.rm = TRUE),
-    area = sum(area, na.rm = TRUE),
-    .groups = "drop"
-  )
-
-# Combine "ALL" rows with the original dataframe
-conteo_fondo_especie_transecta_complete_con_ALL <- conteo_fondo_especie_transecta_complete %>%
-  bind_rows(conteo_total_por_transecta)
-
-# **Step 15: Calculate density in individuals/m² and individuals/1000m²**
-conteo_fondo_especie_transecta_complete_con_ALL <- conteo_fondo_especie_transecta_complete_con_ALL %>%
-  mutate(
-    density = conteo / area,           # Density in individuals/m²
-    density_1000m2 = density * 1000   # Density in individuals/1000m²
-  )
-
-# **Step 16: Calculate average density per species and substrate type**
-densidad_promedio <- conteo_fondo_especie_transecta_complete_con_ALL %>%
-  group_by(label_name, tipo_fondo) %>%
-  summarise(
-    mean_density = mean(density_1000m2, na.rm = TRUE),  # Average density (ind/1000m²)
-    sd_density = sd(density_1000m2, na.rm = TRUE),      # Standard deviation of density
-    n = n(),                                           # Number of replicates (transects)
-    .groups = "drop"
-  )
-
-# **Step 17: Export results**
-# Save the summarized density data to a CSV file
-#write.csv(densidad_promedio, "density_summary.csv", row.names = FALSE)
-
-
-
-#Species richness per substrate type----
-video.annotations.Paralenz_Biota <- subset(video.annotations.Paralenz, label_1=="Biota")
-
-
-bottom_types_biota <- data.frame(
-  CATAMI_NAME = c("Polyzoa opuntia", "Ascidians:Unstalked:Solitary", "Antholoba achates", "Metridium", "Carcinus maenas", "Leucippa pentagona", "Leurocyclus tuberculosus", "Ovalipes trimaculatus", "Peltarion spinulosum", "Echinoderms:Sea cucumbers", "Allostichaster capensis", "Anasterias antarctica", "Cosmasterias lurida", "Patagonotothen", "Sebastes oculatus", "Community Codium", "Gracilaria", "Macroalgae:Filamentous/filiform", "Macroalgae:Filamentous/filiform:Green", "Macrocystis pyrifera", "Undaria pinnatifida", "Community Dictyota", "Community Ulva", "Bivalves", "Odontocymbiola magellanica", "Sponges:Crusts:Encrusting", "Sponges:Massiveforms:Simple", "Aphrodita sp."),
-  Substrate_type = c("Rock", "Rock", "Rock", "Rock", "All", "Rock", "Sand", "Sand", 
-                     "Sand", "Sand", "Rock", "Rock","Rock", "All", "Rock", "Rock", "Sand", 
-                     "Rock", "Rock", "Rock", "Rock", "Rock", "Rock", "Rock", "All", 
-                     "Rock", "Rock", "All")
+# Summarize total distances for each substrate type using aggregate
+substrate_distances <- aggregate(
+  distance ~ label_name,
+  data = filtered_annotations,
+  FUN = function(x) sum(x, na.rm = TRUE)
 )
 
+# Rename columns for consistency
+colnames(substrate_distances) <- c("tipo_fondo", "total_distance")
 
-video.annotations.Paralenz_Biota <- merge(video.annotations.Paralenz_Biota, bottom_types_biota,
-                                          by.x = "label_name", by.y = "CATAMI_NAME", 
-                                          all.x = F)
+# Calculate the area (distance * width)
+substrate_distances$area <- substrate_distances$total_distance * 2
 
-library(ggplot2)
-library(dplyr)
+# Calculate the total sampled area
+overall_area <- sum(substrate_distances$area, na.rm = TRUE)
 
-# Agrupar por 'Substrate_type.y' y contar los distintos 'label_name' por tipo de fondo
-species_count <- video.annotations.Paralenz_Biota %>%
-  group_by(Substrate_type.y) %>%
-  summarise(Species_count = n_distinct(label_name))
+# Combine annotation counts with substrate area data
+density_data <- merge(annotation_counts, substrate_distances, by = "tipo_fondo", all.x = TRUE)
 
-ggplot(species_count, aes(x = Substrate_type.y, y = Species_count, group = 1)) +
-  geom_point(size = 4, color = "blue") +  # Puntos
-  geom_line(color = "blue", size = 1) +   # Líneas que conectan los puntos
-  labs(title = "Cantidad de especies por tipo de fondo", 
-       x = "Tipo de fondo", 
-       y = "Cantidad de especies (label_name)") +
-  theme_minimal()
+# Add density for each substrate type
+density_data$density <- ifelse(is.na(density_data$area) | density_data$area == 0, NA, 
+                               density_data$count / density_data$area)
+density_data$density_per_1000m2 <- density_data$density * 1000  # Convert to individuals per 1000 m²
+
+# Calculate overall density by label_name
+overall_density <- aggregate(
+  list(count = video.annotations.Paralenz_filtered$label_name), 
+  by = list(label_name = video.annotations.Paralenz_filtered$label_name), 
+  FUN = length
+)
+
+overall_density$density <- overall_density$count / overall_area
+overall_density$density_per_1000m2 <- overall_density$density * 1000
+overall_density$tipo_fondo <- "Overall"
+overall_density$area <- overall_area  # Add global area for consistency
+
+# Combine substrate-specific and overall densities
+final_density_data <- rbind(
+  density_data[c("tipo_fondo", "label_name", "count", "area", "density", "density_per_1000m2")],
+  overall_density[c("tipo_fondo", "label_name", "count", "area", "density", "density_per_1000m2")]
+)
+
+# Save the summarized density data to a CSV file
+#write.csv(final_density_data, "density_summary.csv", row.names = FALSE)
